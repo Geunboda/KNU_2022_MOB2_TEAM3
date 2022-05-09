@@ -12,6 +12,7 @@ struct SmartSchedulerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            // test
         }
     }
 }

@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  SmartScheduler
 //
-//  Created by Bogeun Kim on 2022/05/10.
+//  Created by seyonee on 2022/05/10.
 //
 
 import SwiftUI
@@ -10,20 +10,13 @@ import UIKit
 
 
 struct ContentView: View {
-
     var body: some View {
-        
         VStack {
             ScrollView {
-                
-                Text("기본 설정").font(.title3)
-                Spacer()
-                SettingBar(content: "준비 소요 시간").offset(x: 0, y: 30)
-                Spacer()
-                SettingBar(content: "수면 시간").offset(x:0, y: 50)
-                Spacer()
-                LocationBar(content: "위치").offset(x:0, y: 70)
-                Button("설정 완료") {
+                Text("출발장소설정").font(.title3)
+                LocationBar(content: "기본 출발 장소").offset(x:0, y: 0)
+                SettingBar(content: "").offset(x: 0, y: 10)
+                Button("저장하기") {
 
                 }.offset(x:0, y: 100)
                 
@@ -45,16 +38,18 @@ struct SettingBar: View {
             Text(content)
                 .offset(x:0, y: -40)
             VStack{
-                TextField("시간을 입력하시오", text:$time)
-                    .frame(width: 200, height: 10)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.decimalPad)
-                    .padding()
-                Button("입력") {
-                    hideKeyboard()
-                }
-            }.offset(x:0, y: 10)
+                HStack{
+                    TextField("장소입력", text:$time)
+                        .frame(width: 200, height: 10)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                        .padding()
+                    Button("입력") {
+                        hideKeyboard()
+                    }
+                }.offset(x:0, y: -35)
+            }
         }
         .frame(width: 320, height: 130)
         
@@ -71,12 +66,9 @@ struct LocationBar: View {
             shape.fill().foregroundColor(.white)
             shape.stroke(lineWidth: 2)
             Text(content)
-                .offset(x:0, y: -100)
+                .offset(x:0, y: -110)
             VStack{
                 
-                Button("입력") {
-                    hideKeyboard()
-                }
             }
         }.frame(width: 320, height: 260)
     }

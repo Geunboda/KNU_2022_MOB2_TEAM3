@@ -8,43 +8,70 @@
 import SwiftUI
 
 struct Home: View {
+    @State var showAddSchedulerView: Bool = false
     @State var currentDate: Date = Date()
+    
     var body: some View {
-        // Title bar
+        VStack {
+            TitleBar()
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 20) {
+                    DatePickerView(currentDate: $currentDate)
+                }
+                .padding(.vertical)
+            }
+            AddButton(content: "일정 추가하기", action: {
+                showAddSchedulerView = true
+            })
+        }.sheet(isPresented: $showAddSchedulerView) {
+            AddSchedulerView(showModal: $showAddSchedulerView)
+        }
+    }
+}
+
+struct TitleBar: View {
+    @State var showSettingrView: Bool = false
+    
+    var body: some View {
         HStack {
             Text("Smart Scheduler")
                 .font(.title2.bold())
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Image(systemName: "bell.fill")
-                .foregroundColor(.blue)
-        }
-        .padding(.horizontal)
-        .padding(.vertical)
-        
-        // Calendar
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 20) {
-                DatePicker(currentDate: $currentDate)
-            }
-            .padding(.vertical)
-        }
-        
-        // Task add button
-        HStack {
-            Button {
+            Button(action: {
                 
-            } label: {
-                Text("일정 추가하기")
-                    .fontWeight(.bold)
-                    .padding(.vertical)
-                    .frame(maxWidth: .infinity)
-                    .background(Color("Blue"), in: Capsule())
+            }) {
+                Image(systemName: "bell.fill")
+                    .foregroundColor(.blue)
+            }
+            Button(action: {
+                showSettingrView = true
+            }) {
+                Image(systemName: "gearshape")
+                    .foregroundColor(.blue)
             }
         }
-        .padding(.horizontal)
-        .padding(.top, 10)
-        .foregroundColor(.white)
-        .background(.ultraThinMaterial)
+        .padding([.horizontal, .vertical])
+        .sheet(isPresented: $showSettingrView) {
+            SettingView(showModal: $showSettingrView)
+        }
+    }
+}
+
+struct AddButton: View {
+    var content: String
+    var action: () -> ()
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            Text(content)
+                .foregroundColor(.white)
+                .fontWeight(.bold)
+                .padding(.vertical)
+                .frame(maxWidth: .infinity)
+                .background(Color("Blue"), in: Capsule())
+        }
+        .padding([.horizontal, .vertical])
     }
 }
 

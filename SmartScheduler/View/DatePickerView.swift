@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DatePicker: View {
+struct DatePickerView: View {
     @Binding var currentDate: Date
     
     // Month update on arrow button clicks

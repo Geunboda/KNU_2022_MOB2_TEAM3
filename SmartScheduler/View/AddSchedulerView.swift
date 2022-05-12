@@ -111,7 +111,6 @@ struct ScheduleEditView: View{
                         
                     }
                     .padding(.horizontal)
-                    
                 }
                 .padding()
             }

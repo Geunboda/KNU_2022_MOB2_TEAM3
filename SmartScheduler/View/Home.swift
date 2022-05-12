@@ -38,7 +38,7 @@ struct Home: View {
                     .fontWeight(.bold)
                     .padding(.vertical)
                     .frame(maxWidth: .infinity)
-                    .background(Color("Pink"), in: Capsule())
+                    .background(Color("Blue"), in: Capsule())
             }
         }
         .padding(.horizontal)

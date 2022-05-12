@@ -66,7 +66,7 @@ struct DatePicker: View {
                     CardView(value: value)
                         .background(
                             Capsule()
-                                .fill(Color("Red"))
+                                .fill(Color("Blue"))
                                 .padding(.horizontal, 8)
                                 .opacity(isSameDay(date1: value.date, date2: currentDate) ? 1 : 0)
                         )
@@ -123,7 +123,7 @@ struct DatePicker: View {
                         .frame(maxWidth: .infinity)
                     Spacer()
                     Circle()
-                        .fill(isSameDay(date1: task.taskDate, date2: currentDate) ? .white : Color("Red"))
+                        .fill(isSameDay(date1: task.taskDate, date2: currentDate) ? .white : Color("Blue"))
                         .frame(width: 8, height: 8)
                 } else {
                     Text("\(value.day)")

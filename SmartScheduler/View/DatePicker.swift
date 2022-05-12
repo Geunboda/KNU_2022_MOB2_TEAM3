@@ -9,17 +9,21 @@ import SwiftUI
 
 struct DatePicker: View {
     @Binding var currentDate: Date
+    
     // Month update on arrow button clicks
     @State var currentMonth: Int = 0
     
     var body: some View {
         VStack(spacing: 35) {
             let days: [String] = [ "일", "월", "화", "수", "목", "금", "토" ]
+            
             HStack {
                 VStack(alignment: .leading, spacing: 20) {
+                    // Year
                     Text(extraDate()[0])
                         .font(.caption)
                         .fontWeight(.semibold)
+                    // Month
                     Text(extraDate()[1])
                         .font(.title.bold())
                 }
@@ -49,18 +53,20 @@ struct DatePicker: View {
                         .font(.callout)
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
+                        .foregroundColor(day == "일" ? Color("Red") : .black)
                 }
             }
             
             // Dates
             // Lazy Grid
             let  columns = Array(repeating: GridItem(.flexible()), count: 7)
+            
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(extractDate()) { value in
                     CardView(value: value)
                         .background(
                             Capsule()
-                                .fill(Color("Pink"))
+                                .fill(Color("Red"))
                                 .padding(.horizontal, 8)
                                 .opacity(isSameDay(date1: value.date, date2: currentDate) ? 1 : 0)
                         )
@@ -69,6 +75,7 @@ struct DatePicker: View {
                         }
                 }
             }
+            
             VStack(spacing: 15) {
                 Text("일정")
                     .font(.title2.bold())
@@ -107,7 +114,6 @@ struct DatePicker: View {
     func CardView(value: DateValue) -> some View {
         VStack {
             if value.day != -1 {
-                // Text("\(value.day)").font(.title3.bold())
                 if let task = tasks.first(where: { task in
                     return isSameDay(date1: task.taskDate, date2: value.date )
                 }) {
@@ -117,7 +123,7 @@ struct DatePicker: View {
                         .frame(maxWidth: .infinity)
                     Spacer()
                     Circle()
-                        .fill(isSameDay(date1: task.taskDate, date2: currentDate) ? .white : Color("Pink"))
+                        .fill(isSameDay(date1: task.taskDate, date2: currentDate) ? .white : Color("Red"))
                         .frame(width: 8, height: 8)
                 } else {
                     Text("\(value.day)")

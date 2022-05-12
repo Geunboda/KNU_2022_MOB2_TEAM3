@@ -10,22 +10,35 @@ import SwiftUI
 struct Home: View {
     @State var currentDate: Date = Date()
     var body: some View {
+        // Title bar
+        HStack {
+            Text("Smart Scheduler")
+                .font(.title2.bold())
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Image(systemName: "bell.fill")
+                .foregroundColor(.blue)
+        }
+        .padding(.horizontal)
+        .padding(.vertical)
+        
+        // Calendar
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 20) {
                 DatePicker(currentDate: $currentDate)
             }
             .padding(.vertical)
         }
-        // Safe Area View
+        
+        // Task add button
         HStack {
             Button {
                 
             } label: {
-                Text("일정 추가")
+                Text("일정 추가하기")
                     .fontWeight(.bold)
                     .padding(.vertical)
                     .frame(maxWidth: .infinity)
-                    .background(Color("Orange"), in: Capsule())
+                    .background(Color("Pink"), in: Capsule())
             }
         }
         .padding(.horizontal)

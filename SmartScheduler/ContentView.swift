@@ -8,14 +8,10 @@
 import SwiftUI
 import UIKit
 
-
 struct ContentView: View {
-
     var body: some View {
-        
         VStack {
             ScrollView {
-                
                 Text("기본 설정").font(.title3)
                 Spacer()
                 SettingBar(content: "준비 소요 시간").offset(x: 0, y: 30)
@@ -26,15 +22,12 @@ struct ContentView: View {
                 Button("설정 완료") {
 
                 }.offset(x:0, y: 100)
-                
             }
         }
-        
     }
 }
 
 struct SettingBar: View {
-    
     @State var time = ""
     var content: String
     var body: some View {
@@ -62,7 +55,6 @@ struct SettingBar: View {
 }
 
 struct LocationBar: View {
-    
     @State var time = ""
     var content: String
     var body: some View {
@@ -81,6 +73,7 @@ struct LocationBar: View {
         }.frame(width: 320, height: 260)
     }
 }
+
 #if canImport(UIKit)
 extension View {
     func hideKeyboard() {
@@ -88,7 +81,6 @@ extension View {
     }
 }
 #endif
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

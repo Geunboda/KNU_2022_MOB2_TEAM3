@@ -11,6 +11,9 @@
 		4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0628296F5D0044878B /* SettingView.swift */; };
 		4F6CEB0928296F5E0044878B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0828296F5E0044878B /* Assets.xcassets */; };
 		4F6CEB0C28296F5E0044878B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0B28296F5E0044878B /* Preview Assets.xcassets */; };
+		7E32F7202850BBF8003DE14F /* PublicTrafficRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32F71F2850BBF8003DE14F /* PublicTrafficRouteView.swift */; };
+		7E32F7292850BEFF003DE14F /* ODsaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E32F7282850BEFF003DE14F /* ODsaySDK.framework */; };
+		7E32F72A2850BEFF003DE14F /* ODsaySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E32F7282850BEFF003DE14F /* ODsaySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */; };
 		BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC2282C2ACE0074F376 /* Home.swift */; };
 		BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC4282C2DA80074F376 /* DateValue.swift */; };
@@ -19,12 +22,30 @@
 		BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DECA282D57610074F376 /* LocationSettingView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7E32F7272850BEF3003DE14F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7E32F72A2850BEFF003DE14F /* ODsaySDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4F6CEB0128296F5D0044878B /* SmartScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartSchedulerApp.swift; sourceTree = "<group>"; };
 		4F6CEB0628296F5D0044878B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		4F6CEB0828296F5E0044878B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F6CEB0B28296F5E0044878B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7E32F71F2850BBF8003DE14F /* PublicTrafficRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTrafficRouteView.swift; sourceTree = "<group>"; };
+		7E32F7282850BEFF003DE14F /* ODsaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ODsaySDK.framework; path = "ODsaySDK-Framework/simulator/ODsaySDK.framework"; sourceTree = "<group>"; };
+		7E32F72C2850C425003DE14F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E32F72E2850C4C6003DE14F /* objective_C_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objective_C_Bridging_Header.h; sourceTree = "<group>"; };
 		BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		BFB7DEC2282C2ACE0074F376 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		BFB7DEC4282C2DA80074F376 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
@@ -38,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E32F7292850BEFF003DE14F /* ODsaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,8 +69,11 @@
 		4F6CEAF828296F5D0044878B = {
 			isa = PBXGroup;
 			children = (
+				7E32F72E2850C4C6003DE14F /* objective_C_Bridging_Header.h */,
+				7E32F72C2850C425003DE14F /* Info.plist */,
 				4F6CEB0328296F5D0044878B /* SmartScheduler */,
 				4F6CEB0228296F5D0044878B /* Products */,
+				7E32F7212850BDC4003DE14F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,8 +91,6 @@
 				BFB7DEBF282C2AA30074F376 /* Model */,
 				BFB7DEBE282C2A9F0074F376 /* View */,
 				4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */,
-				4F6CEB0628296F5D0044878B /* ContentView.swift */,
-				7EB48887282D5BFD00AEE050 /* addScheduleView.swift */,
 				4F6CEB0828296F5E0044878B /* Assets.xcassets */,
 				4F6CEB0A28296F5E0044878B /* Preview Content */,
 			);
@@ -82,6 +105,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		7E32F7212850BDC4003DE14F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E32F7282850BEFF003DE14F /* ODsaySDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BFB7DEBE282C2A9F0074F376 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +121,7 @@
 				BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */,
 				BFB7DEC8282D4FE20074F376 /* AddSchedulerView.swift */,
 				BFB7DECA282D57610074F376 /* LocationSettingView.swift */,
+				7E32F71F2850BBF8003DE14F /* PublicTrafficRouteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -113,6 +145,7 @@
 				4F6CEAFD28296F5D0044878B /* Sources */,
 				4F6CEAFE28296F5D0044878B /* Frameworks */,
 				4F6CEAFF28296F5D0044878B /* Resources */,
+				7E32F7272850BEF3003DE14F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,6 +209,7 @@
 				4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */,
 				BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */,
 				4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */,
+				7E32F7202850BBF8003DE14F /* PublicTrafficRouteView.swift in Sources */,
 				BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */,
 				BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */,
 				BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */,
@@ -309,9 +343,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SmartScheduler/Preview Content\"";
-				DEVELOPMENT_TEAM = BCFDK8SXLQ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ODsaySDK-Framework/iphoneos",
+					"$(PROJECT_DIR)/ODsaySDK-Framework/simulator",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = /Users/leewongeun/Desktop/KNU_2022_MOB2_TEAM3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -323,9 +363,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.KNU-2022-MOB2-TEAM3.SmartScheduler";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.KNU2022MOB2TEAM3.SmartScheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/leewongeun/Desktop/KNU_2022_MOB2_TEAM3/objective_C_Bridging_Header.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -339,9 +381,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SmartScheduler/Preview Content\"";
-				DEVELOPMENT_TEAM = BCFDK8SXLQ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ODsaySDK-Framework/iphoneos",
+					"$(PROJECT_DIR)/ODsaySDK-Framework/simulator",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = /Users/leewongeun/Desktop/KNU_2022_MOB2_TEAM3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -353,9 +401,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.KNU-2022-MOB2-TEAM3.SmartScheduler";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.KNU2022MOB2TEAM3.SmartScheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/leewongeun/Desktop/KNU_2022_MOB2_TEAM3/objective_C_Bridging_Header.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

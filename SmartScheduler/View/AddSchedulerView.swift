@@ -44,6 +44,10 @@ struct ScheduleEditView: View{
     @State var scheduleName = ""
     @State var scheduleTime = ""
     @State var alarmOn = false
+    @State var schedulePlace = ""
+    @State var traffic = 0 //0: 미선택 1: 대중교통 2: 자차 3: 도보
+    
+    @State var showPublicTrafficRouteView: Bool = false
     
     var body: some View {
         VStack {
@@ -83,7 +87,7 @@ struct ScheduleEditView: View{
                         Text("일정 장소")
                             .multilineTextAlignment(.leading)
                             .padding()
-                        TextField("장소:",text:$scheduleName)
+                        TextField("장소:",text:$schedulePlace)
                             .padding()
                         Button("검색") {
                             hideKeyboard()
@@ -100,18 +104,35 @@ struct ScheduleEditView: View{
                     Text("교통편")
                         .multilineTextAlignment(.leading)
                     Button("대중교통") {
-                        
+                        traffic = 1
                     }
                     .padding(.horizontal)
                     Button("자동차") {
-                        
+                        traffic = 2
                     }
                     .padding(.horizontal)
                     Button("도보") {
-                        
+                        traffic = 3
                     }
                     .padding(.horizontal)
                     
+                }
+                .padding()
+            }
+            
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .strokeBorder(lineWidth: 3)
+                HStack {
+                    Button("경로 검색") {
+                        if(traffic == 1){
+                            showPublicTrafficRouteView = true
+                        }
+                    }
+                    .padding(.horizontal)
+                    .sheet(isPresented: $showPublicTrafficRouteView) {
+                        PublicTrafficRouteView(showModal: $showPublicTrafficRouteView)
+                    }
                 }
                 .padding()
             }

@@ -48,6 +48,10 @@ struct ScheduleEditView: View{
     @State var traffic = 0 //0: 미선택 1: 대중교통 2: 자차 3: 도보
     
     @State var showPublicTrafficRouteView: Bool = false
+    @State var origin_x: String!
+    @State var origin_y: String!
+    @State var dest_x: String!
+    @State var dest_y: String!
     
     var body: some View {
         VStack {
@@ -131,7 +135,7 @@ struct ScheduleEditView: View{
                     }
                     .padding(.horizontal)
                     .sheet(isPresented: $showPublicTrafficRouteView) {
-                        PublicTrafficRouteView(showModal: $showPublicTrafficRouteView)
+                        PublicTrafficRouteView(showModal: $showPublicTrafficRouteView, originLatitude: $origin_y,originLongitude: $origin_x,destLatitude: $dest_y,destLongitude: $dest_x)
                     }
                 }
                 .padding()

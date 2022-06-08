@@ -100,7 +100,7 @@ struct SubPath: Codable{ //1-9-3
     let trafficType: Int // 1-9-3-1
     let distance: Double //2
     let sectionTime: Int //3
-    let passStopList : PassStopList //31
+    let passStopList : PassStopList? //31
 }
 
 struct PassStopList: Codable{ // 1-9-3-31

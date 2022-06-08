@@ -19,18 +19,24 @@ struct PublicTrafficRouteView: View {
     let decoder = JSONDecoder()
     
     func viewDidLoad() {
-        var result: String!
-        var parsedResult: ResultInfo?
+        //var result: String!
         ODsayService.sharedInst().setApiKey("iLLJul5KVhowQ4a2oobPhg")    //SDK 인증
         ODsayService.sharedInst().setTimeout(5000)    //통신 타임아웃 설정
         ODsayService.sharedInst().requestSearchPubTransPath("128.62864955761276",sy: "35.8791619244707",ex: "128.61454739896172",ey: "35.885516134309185", opt: 0, searchType: 0, searchPathType: 0){
             (retCode:Int32, resultDic:[AnyHashable : Any]!) in
             if retCode == 200 {
-                result = mDictToTextJson(rMDic: resultDic!)
-                print(mDictToTextJson(rMDic: resultDic!))
-                print("/////////////////")
+                //result = mDictToTextJson(rMDic: resultDic)
                 
-                
+                do {
+                    let resultJson = try JSONSerialization.data(withJSONObject: resultDic!, options: .prettyPrinted)
+                    let result = try JSONDecoder().decode(ResultInfo.self, from: resultJson)
+                    print(String(data: resultJson, encoding: .utf8)!)
+                    print("/////////////////")
+                    print(result.result.busCount)
+                    // 결과 :: Optional("{\"name\":\"demnodey\",\"part\":\"development\"}")
+                } catch {
+                    print(error.localizedDescription)
+                }
             } else {
                        print(resultDic!.description)
             }
@@ -50,17 +56,6 @@ struct PublicTrafficRouteView: View {
     }
 }
 
-func parseResult(_ result: String) -> ResultInfo? {
-    let resultData = result.data(using: .nonLossyASCII)
-    do {
-        let parsedResult = try JSONDecoder().decode(ResultInfo.self, from: resultData!)
-        return parsedResult
-    } catch {
-        print(error)
-        return nil
-    }
-}
-
 func mDictToTextJson(rMDic:[AnyHashable : Any]?) -> String {
     if let sText = rMDic?.description {
         if let bytes = sText.cString(using: String.Encoding.ascii) {
@@ -73,45 +68,45 @@ func mDictToTextJson(rMDic:[AnyHashable : Any]?) -> String {
     }
 }
 
-struct ResultInfo: Decodable {
-    let result: Result
-    let busCount: Int
+struct ResultInfo: Codable{
+    let result: Result // 1
 }
 
-struct Result: Decodable{
-    let searchType: Int
-    let path: [Path]
+struct Result: Codable{
+    let busCount: Int // 1-3
+    let searchType: Int // 1-1
+    let path: [Path] // 1-9
 }
 
-struct Path: Decodable{
-    let pathType: Int
-    let info: Info
-    let subPath: [SubPath]
+struct Path: Codable{ // 1-9
+    let pathType: Int // 1-9-1
+    let info: Info // 1-9-2
+    let subPath: [SubPath] //1-9-3
 }
 
-struct Info: Decodable{
-    let totalWalk: Int
-    let totalTime: Int
-    let payment: Int
-    let busTransitCount: Int
-    let subwayTransitCount: Int
-    let firstStartStation: String
-    let lastEndStation: String
-    let busStationCount: Int
-    let subwayStationCount: Int
+struct Info: Codable{ //1-9-2
+    let totalWalk: Int //1-9-2-2
+    let totalTime: Int //1-9-2-3
+    let payment: Int // 4
+    let busTransitCount: Int // 5
+    let subwayTransitCount: Int // 6
+    let firstStartStation: String // 8
+    let lastEndStation: String // 9
+    let busStationCount: Int // 11
+    let subwayStationCount: Int //12
 }
 
-struct SubPath: Decodable{
-    let trafficType: Int
-    let distance: Double
-    let sectionTime: Int
-    let passStopList: PassStopList
+struct SubPath: Codable{ //1-9-3
+    let trafficType: Int // 1-9-3-1
+    let distance: Double //2
+    let sectionTime: Int //3
+    let passStopList : PassStopList //31
 }
 
-struct PassStopList: Decodable{
-    let station: [Station]
+struct PassStopList: Codable{ // 1-9-3-31
+    let stations: [Stations]
 }
 
-struct Station: Decodable{
+struct Stations: Codable{
     let stationName: String
 }

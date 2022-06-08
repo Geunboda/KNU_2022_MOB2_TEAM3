@@ -78,7 +78,7 @@ struct DatePickerView: View {
             
             VStack(spacing: 15) {
                 Text("일정")
-                    .font(.title2.bold())
+                    .font(.title.bold())
                     .frame(maxWidth: .infinity, alignment: .leading)
                 if let task = tasks.first(where: { task in
                     return isSameDay(date1: task.taskDate, date2: currentDate)

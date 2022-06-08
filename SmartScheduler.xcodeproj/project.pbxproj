@@ -19,6 +19,7 @@
 		BFB7DEC7282C32E10074F376 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC6282C32E10074F376 /* Task.swift */; };
 		BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC8282D4FE20074F376 /* AddSchedulerView.swift */; };
 		BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DECA282D57610074F376 /* LocationSettingView.swift */; };
+		BFBDDEFA285109AA00E0BDCB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDDEF9285109AA00E0BDCB /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		BFB7DEC6282C32E10074F376 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		BFB7DEC8282D4FE20074F376 /* AddSchedulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSchedulerView.swift; sourceTree = "<group>"; };
 		BFB7DECA282D57610074F376 /* LocationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingView.swift; sourceTree = "<group>"; };
+		BFBDDEF9285109AA00E0BDCB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */,
 				BFB7DEC8282D4FE20074F376 /* AddSchedulerView.swift */,
 				BFB7DECA282D57610074F376 /* LocationSettingView.swift */,
+				BFBDDEF9285109AA00E0BDCB /* MapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */,
 				BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */,
 				BFB7DEC7282C32E10074F376 /* Task.swift in Sources */,
+				BFBDDEFA285109AA00E0BDCB /* MapView.swift in Sources */,
 				BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

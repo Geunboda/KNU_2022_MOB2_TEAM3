@@ -15,10 +15,7 @@ struct Home: View {
         VStack {
             TitleBar()
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 20) {
-                    DatePickerView(currentDate: $currentDate)
-                }
-                .padding(.vertical)
+                DatePickerView(currentDate: $currentDate)
             }
             AddButton(content: "일정 추가하기", action: {
                 showAddSchedulerView = true

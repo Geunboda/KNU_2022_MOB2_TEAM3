@@ -18,12 +18,11 @@ struct SettingView: View {
     var body: some View {
         SheetTitleBar(content: "기본 설정", showModal: $showModal)
         ScrollView {
+            TimeSetting(content: "준비 소요 시간", discription: "평소 나갈때 준비하는 시간을 입력해주세요.", image: "hare.fill")
             Spacer()
-            SettingBar(content: "준비 소요 시간").offset(x: 0, y: 30)
+            TimeSetting(content: "수면 시간", discription: "보통 몇 시간 주무시나요?", image: "bed.double.fill")
             Spacer()
-            SettingBar(content: "수면 시간").offset(x:0, y: 50)
-            Spacer()
-            LocationBar(content: "위치").offset(x:0, y: 70)
+            LocationSetting(content: "출발 위치", discription: "어디서 주로 출발하시나요?", image: "figure.walk")
         }
         AddButton(content: "저장 하기", action: {
             showModal = false
@@ -31,51 +30,75 @@ struct SettingView: View {
     }
 }
 
-struct SettingBar: View {
-    @State var time = ""
+struct TimeSetting: View {
+    @State var hour: Int = 0
+    @State var min: Int = 0
     var content: String
+    var discription: String
+    var image: String
     
     var body: some View {
-        ZStack {
-            let shape = RoundedRectangle(cornerRadius: 20)
-            shape.fill().foregroundColor(.white)
-            shape.stroke(lineWidth: 3)
-            Text(content)
-                .offset(x:0, y: -40)
-            VStack {
-                TextField("시간을 입력하시오", text: $time)
-                    .frame(width: 200, height: 10)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.decimalPad)
-                    .padding()
-                Button("입력") {
-                    hideKeyboard()
-                }
-            }.offset(x:0, y: 10)
+        Text(content)
+            .padding(.vertical)
+            .font(.title.bold())
+        Image(systemName: image)
+            .font(.title)
+        Text(discription)
+            .padding(.vertical)
+        HStack {
+            Button {
+                decreaseTime(&hour, &min)
+            } label: {
+                Image(systemName: "minus.circle.fill")
+                    .font(.title)
+            }
+            Text("\(hour)시간 \(min)분")
+                .font(.title2.bold())
+                .padding(.horizontal, 30)
+            Button {
+                increaseTime(&hour, &min)
+            } label: {
+                Image(systemName: "plus.circle.fill")
+                    .font(.title)
+            }
         }
-        .frame(width: 320, height: 130)
-        
+    }
+    
+    func decreaseTime(_ hour: inout Int, _ min: inout Int) -> () {
+        if min == 0 {
+            if hour > 0 {
+                min = 30
+                hour -= 1
+            }
+        } else if min == 30 {
+            min = 0
+        }
+    }
+    
+    func increaseTime(_ hour: inout Int, _ min: inout Int) -> () {
+        if min == 0 {
+            min = 30
+        } else if min == 30 {
+            min = 0
+            hour += 1
+        }
     }
 }
 
-struct LocationBar: View {
-    @State var time = ""
+struct LocationSetting: View {
     var content: String
+    var discription: String
+    var image: String
     
     var body: some View {
-        ZStack {
-            let shape = RoundedRectangle(cornerRadius: 20)
-            shape.fill().foregroundColor(.white)
-            shape.stroke(lineWidth: 3)
-            Text(content)
-                .offset(x:0, y: -100)
-            VStack{
-                Button("입력") {
-                    hideKeyboard()
-                }
-            }
-        }.frame(width: 320, height: 260)
+        Text(content)
+            .padding(.vertical)
+            .font(.title.bold())
+        Image(systemName: image)
+            .font(.title)
+        Text(discription)
+            .padding(.vertical)
+        Image("Map")
     }
 }
 

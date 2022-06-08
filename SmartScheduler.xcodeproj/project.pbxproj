@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C137FB52850B4530055A908 /* AddMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FB42850B4530055A908 /* AddMapView.swift */; };
+		2C137FB82850B57F0055A908 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C137FB72850B57F0055A908 /* SnapKit */; };
+		2C137FC2285140940055A908 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FC1285140940055A908 /* MyMapView.swift */; };
+		2C137FC428514FF10055A908 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FC328514FF10055A908 /* MapView.swift */; };
 		4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */; };
 		4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0628296F5D0044878B /* SettingView.swift */; };
 		4F6CEB0928296F5E0044878B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0828296F5E0044878B /* Assets.xcassets */; };
@@ -20,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C137FB42850B4530055A908 /* AddMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMapView.swift; sourceTree = "<group>"; };
+		2C137FC1285140940055A908 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
+		2C137FC328514FF10055A908 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4F6CEB0128296F5D0044878B /* SmartScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartSchedulerApp.swift; sourceTree = "<group>"; };
 		4F6CEB0628296F5D0044878B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -38,12 +45,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C137FB82850B57F0055A908 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C137FB32850A3550055A908 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				2C137FB42850B4530055A908 /* AddMapView.swift */,
+				2C137FC328514FF10055A908 /* MapView.swift */,
+				2C137FC1285140940055A908 /* MyMapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		4F6CEAF828296F5D0044878B = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +81,7 @@
 		4F6CEB0328296F5D0044878B /* SmartScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				2C137FB32850A3550055A908 /* Map */,
 				BFB7DEBF282C2AA30074F376 /* Model */,
 				BFB7DEBE282C2A9F0074F376 /* View */,
 				4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */,
@@ -117,6 +136,9 @@
 			dependencies = (
 			);
 			name = SmartScheduler;
+			packageProductDependencies = (
+				2C137FB72850B57F0055A908 /* SnapKit */,
+			);
 			productName = SmartScheduler;
 			productReference = 4F6CEB0128296F5D0044878B /* SmartScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -145,6 +167,9 @@
 				Base,
 			);
 			mainGroup = 4F6CEAF828296F5D0044878B;
+			packageReferences = (
+				2C137FB62850B57F0055A908 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4F6CEB0228296F5D0044878B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,10 +199,13 @@
 				4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */,
 				BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */,
 				4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */,
+				2C137FC428514FF10055A908 /* MapView.swift in Sources */,
 				BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */,
 				BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */,
 				BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */,
 				BFB7DEC7282C32E10074F376 /* Task.swift in Sources */,
+				2C137FC2285140940055A908 /* MyMapView.swift in Sources */,
+				2C137FB52850B4530055A908 /* AddMapView.swift in Sources */,
 				BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,9 +338,12 @@
 				DEVELOPMENT_TEAM = BCFDK8SXLQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치정보를 받아오려고 합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -340,9 +371,12 @@
 				DEVELOPMENT_TEAM = BCFDK8SXLQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치정보를 받아오려고 합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -381,6 +415,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C137FB62850B57F0055A908 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C137FB72850B57F0055A908 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C137FB62850B57F0055A908 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4F6CEAF928296F5D0044878B /* Project object */;
 }

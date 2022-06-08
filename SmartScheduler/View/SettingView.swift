@@ -46,7 +46,7 @@ struct SettingBar: View {
                     .keyboardType(.decimalPad)
                     .padding()
                 Button("입력") {
-                    hideKeyboard()
+                    MyMapView()
                 }
             }.offset(x:0, y: 10)
         }

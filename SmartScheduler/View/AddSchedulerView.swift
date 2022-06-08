@@ -7,6 +7,8 @@
 
 import SwiftUI
 import UIKit
+import SnapKit
+import MapKit
 
 struct AddSchedulerView: View {
     @Binding var showModal: Bool
@@ -41,10 +43,13 @@ struct SheetTitleBar: View {
 }
 
 struct ScheduleEditView: View{
+    @State var showMapView: Bool = false
+    @State var arrivalPlace = ""
     @State var scheduleName = ""
     @State var scheduleTime = ""
     @State var alarmOn = false
-    
+    @State var schedulePlace = ""
+
     var body: some View {
         VStack {
             ZStack {
@@ -83,12 +88,15 @@ struct ScheduleEditView: View{
                         Text("일정 장소")
                             .multilineTextAlignment(.leading)
                             .padding()
-                        TextField("장소:",text:$scheduleName)
+                        TextField("목적지 입력하기", text: $arrivalPlace)
                             .padding()
-                        Button("검색") {
-                            hideKeyboard()
-                        }
-                        .padding(.bottom)
+                        AddButton(content: "목적지 확인하기", action: {
+                            //arrivalPlace = $arrivalPlace
+                            showMapView = true
+                        })
+                    }
+                    .sheet(isPresented: $showMapView) {
+                        AddMapView(arrival: $arrivalPlace, showMapModal: $showMapView)
                     }
                 }
             }

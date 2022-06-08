@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct SmartSchedulerApp: App {
     
-    @StateObject private var dataController = DataController()
-    @FetchRequest(sortDescriptors: []) var schedule: FetchedResults<Schedule>
-    @Environment(\.managedObjectContext) var moc
-    
+
+    @StateObject private var dataController = DataController()    
     var body: some Scene {
         WindowGroup {
             Home()

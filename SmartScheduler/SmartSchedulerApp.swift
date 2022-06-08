@@ -11,7 +11,7 @@ import SwiftUI
 struct SmartSchedulerApp: App {
     var body: some Scene {
         WindowGroup {
-            addScheduleView()
+            Home()
         }
     }
 }

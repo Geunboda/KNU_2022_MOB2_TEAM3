@@ -86,9 +86,10 @@ struct ScheduleEditView: View{
                         TextField("장소:",text:$scheduleName)
                             .padding()
                         Button("검색") {
-                            hideKeyboard()
+                            
                         }
                         .padding(.bottom)
+                        MapView()
                     }
                 }
             }

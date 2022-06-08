@@ -7,6 +7,10 @@
 
 import SwiftUI
 import UIKit
+import CoreData
+
+
+
 
 struct SettingView: View {
     @Binding var showModal: Bool

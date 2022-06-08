@@ -11,6 +11,8 @@
 		4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0628296F5D0044878B /* SettingView.swift */; };
 		4F6CEB0928296F5E0044878B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0828296F5E0044878B /* Assets.xcassets */; };
 		4F6CEB0C28296F5E0044878B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0B28296F5E0044878B /* Preview Assets.xcassets */; };
+		4FCFD01C285114110011994C /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FCFD01A285114110011994C /* UserData.xcdatamodeld */; };
+		4FCFD01E285117890011994C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCFD01D285117890011994C /* DataController.swift */; };
 		BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */; };
 		BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC2282C2ACE0074F376 /* Home.swift */; };
 		BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC4282C2DA80074F376 /* DateValue.swift */; };
@@ -25,6 +27,8 @@
 		4F6CEB0628296F5D0044878B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		4F6CEB0828296F5E0044878B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F6CEB0B28296F5E0044878B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4FCFD01B285114110011994C /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
+		4FCFD01D285117890011994C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		BFB7DEC2282C2ACE0074F376 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		BFB7DEC4282C2DA80074F376 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 		4F6CEAF828296F5D0044878B = {
 			isa = PBXGroup;
 			children = (
+				4FCFD01D285117890011994C /* DataController.swift */,
 				4F6CEB0328296F5D0044878B /* SmartScheduler */,
 				4F6CEB0228296F5D0044878B /* Products */,
 			);
@@ -68,6 +73,7 @@
 				4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */,
 				4F6CEB0828296F5E0044878B /* Assets.xcassets */,
 				4F6CEB0A28296F5E0044878B /* Preview Content */,
+				4FCFD01A285114110011994C /* UserData.xcdatamodeld */,
 			);
 			path = SmartScheduler;
 			sourceTree = "<group>";
@@ -171,10 +177,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FCFD01C285114110011994C /* UserData.xcdatamodeld in Sources */,
 				4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */,
 				BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */,
 				4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */,
 				BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */,
+				4FCFD01E285117890011994C /* DataController.swift in Sources */,
 				BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */,
 				BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */,
 				BFB7DEC7282C32E10074F376 /* Task.swift in Sources */,
@@ -381,6 +389,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4FCFD01A285114110011994C /* UserData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4FCFD01B285114110011994C /* UserData.xcdatamodel */,
+			);
+			currentVersion = 4FCFD01B285114110011994C /* UserData.xcdatamodel */;
+			path = UserData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4F6CEAF928296F5D0044878B /* Project object */;
 }

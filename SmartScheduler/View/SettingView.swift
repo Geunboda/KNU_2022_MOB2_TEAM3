@@ -11,7 +11,7 @@ import CoreData
 
 struct SettingView: View {
     @Binding var showModal: Bool
-    @FetchRequest(sortDescriptors: []) var user: FetchedResults<UserInfo>
+    @FetchRequest(sortDescriptors: []) var userInfo: FetchedResults<UserInfo>
     @Environment(\.managedObjectContext) var moc
     
     @State var prepareHour: Int = 0
@@ -31,6 +31,7 @@ struct SettingView: View {
             TimeSetting(hour: $sleepHour, min: $sleepMin, content: "수면 시간", discription: "보통 몇 시간 주무시나요?", image: "bed.double.fill")
             Spacer()
             LocationSetting(content: "출발 위치", discription: "어디서 주로 출발하시나요?", image: "figure.walk")
+            AddMapView()
         }
         AddButton(content: "저장 하기", action: {
             let userInfo = UserInfo(context: moc)
@@ -46,6 +47,7 @@ struct SettingView: View {
             userInfo.startLat = startLat
 
             try? moc.save()
+
             showModal = false
         })
     }
@@ -130,7 +132,6 @@ struct LocationSetting: View {
             .font(.title)
         Text(discription)
             .padding(.vertical)
-        Image("Map")
     }
 }
 

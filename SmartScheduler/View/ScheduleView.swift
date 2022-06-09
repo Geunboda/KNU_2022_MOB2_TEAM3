@@ -15,19 +15,27 @@ struct ScheduleView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(schedule.title!).font(.title2.bold())
-                Text("\(strToDate(date: schedule.startDate!))에서")
-                Text("\(strToDate(date: schedule.finishDate!))까지")
-                Text(schedule.transportation!)
-                Button("삭제") {
-                    showModal.toggle()
-                    moc.delete(schedule)
-                    try? moc.save()
-                }
+                List {
+                    VStack(alignment: .leading) {
+                        Text(schedule.title!).font(.title.bold()).foregroundColor(.black).padding(.vertical)
+                        Text("\(strToDate(date: schedule.startDate!))에서").foregroundColor(.gray)
+                        Text("\(strToDate(date: schedule.finishDate!))까지").foregroundColor(.gray)
+                    }
+                    NavigationLink(destination: WalkRouteView()) {
+                        Text("장소").foregroundColor(.black)
+                    }
+                    HStack {
+                        Text("교통편").foregroundColor(.black)
+                        Spacer()
+                        Text(schedule.transportation!).foregroundColor(.gray)
+                    }
+                }.frame(alignment: .leading)
             }
             .navigationBarTitle("상세 일정", displayMode: .inline)
-            .navigationBarItems(trailing: Button("수정") {
-    
+            .navigationBarItems(trailing: Button("삭제") {
+                showModal.toggle()
+                moc.delete(schedule)
+                try? moc.save()
             })
         }
     }

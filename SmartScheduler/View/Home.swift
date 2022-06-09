@@ -11,7 +11,6 @@ struct Home: View {
     @State var showAddScheduleView: Bool = false
     @State var currentDate: Date = Date()
     @FetchRequest(sortDescriptors: []) var schedules: FetchedResults<Schedule>
-    @FetchRequest(sortDescriptors: []) var userInfo: FetchedResults<UserInfo>
     
     let calendar = Calendar.current
     let alarm = MakeAlarm()
@@ -29,60 +28,9 @@ struct Home: View {
         .sheet(isPresented: $showAddScheduleView) {
             AddScheduleView(showModal: $showAddScheduleView)
         }
-        .onAppear(){
+        .onAppear() {
             alarm.requestAuthorization()
-            schedules.forEach { schedule in
-                if schedule.sleepAlarm {
-                    let scheduleDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: schedule.startDate!)
-                    
-                    var alarmDateComponents = DateComponents()
-                    alarmDateComponents.year = scheduleDateComponents.year
-                    alarmDateComponents.month = scheduleDateComponents.month
-                    alarmDateComponents.day = scheduleDateComponents.day
-                    alarmDateComponents.hour = scheduleDateComponents.hour - Int(userInfo[0].sleepHour)
-                    alarmDateComponents.minute = scheduleDateComponents.min - Int(userInfo[0].sleepMin)
-                    
-                    alarm.sendNotification(title: schedule.title!, body: "지금 주무셔야 합니다.", dateComponents: alarmDateComponents)
-                }
-                
-                if schedule.prepareAlarm {
-                    let scheduleDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: schedule.startDate!)
-                    
-                    var alarmDateComponents = DateComponents()
-                    alarmDateComponents.year = scheduleDateComponents.year
-                    alarmDateComponents.month = scheduleDateComponents.month
-                    alarmDateComponents.day = scheduleDateComponents.day
-                    alarmDateComponents.hour = scheduleDateComponents.hour - Int(userInfo[0].sleepHour)
-                    alarmDateComponents.minute = scheduleDateComponents.min - Int(userInfo[0].sleepMin)
-                    
-                    alarm.sendNotification(title: schedule.title!, body: "지금 준비하셔야 합니다.", dateComponents: alarmDateComponents)
-                }
-                
-            }
         }
-    }
-    
-    func scheduleNotification() {
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        
-        content.title = "Late wake up call"
-        content.body = "The early bird catches the worm, but the second mouse gets the cheese."
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["customData": "fizzbuzz"]
-        content.sound = UNNotificationSound.default
-
-        var dateComponents = DateComponents()
-        dateComponents.year = 2022
-        dateComponents.month = 6
-        dateComponents.day = 9
-        dateComponents.hour = 19
-        dateComponents.minute = 3
-        
-        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        center.add(request)
     }
 }
 

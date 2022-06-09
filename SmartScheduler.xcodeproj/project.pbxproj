@@ -11,18 +11,19 @@
 		4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0628296F5D0044878B /* SettingView.swift */; };
 		4F6CEB0928296F5E0044878B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0828296F5E0044878B /* Assets.xcassets */; };
 		4F6CEB0C28296F5E0044878B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0B28296F5E0044878B /* Preview Assets.xcassets */; };
-		4FCFD01C285114110011994C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FCFD01A285114110011994C /* DataModel.xcdatamodeld */; };
 		4FCFD01E285117890011994C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCFD01D285117890011994C /* DataController.swift */; };
 		BF3C63992851DF6E00444A42 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C63982851DF6E00444A42 /* ScheduleView.swift */; };
 		BF449FE02852275B00AFFF12 /* MakeAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF449FDF2852275B00AFFF12 /* MakeAlarm.swift */; };
 		BF449FE22852299D00AFFF12 /* alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = BF449FE12852299D00AFFF12 /* alarm.caf */; };
+		BF70BD9B285286E6007CEA89 /* WalkRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70BD9A285286E6007CEA89 /* WalkRoute.swift */; };
+		BF70BD9D28528D43007CEA89 /* AddMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70BD9C28528D43007CEA89 /* AddMapView.swift */; };
+		BF70BD9F28528E10007CEA89 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70BD9E28528E10007CEA89 /* Location.swift */; };
 		BF8136A5285266BA008DDED7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8136A4285266BA008DDED7 /* SearchView.swift */; };
 		BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */; };
 		BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC2282C2ACE0074F376 /* Home.swift */; };
 		BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC4282C2DA80074F376 /* DateValue.swift */; };
 		BFB7DEC9282D4FE20074F376 /* AddScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC8282D4FE20074F376 /* AddScheduleView.swift */; };
-		BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DECA282D57610074F376 /* LocationSettingView.swift */; };
-		BFBDDEFA285109AA00E0BDCB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDDEF9285109AA00E0BDCB /* MapView.swift */; };
+		BFFBA1922852742B00DEF4A3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFFBA1902852742B00DEF4A3 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,18 +32,19 @@
 		4F6CEB0628296F5D0044878B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		4F6CEB0828296F5E0044878B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F6CEB0B28296F5E0044878B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4FCFD01B285114110011994C /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		4FCFD01D285117890011994C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		BF3C63982851DF6E00444A42 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		BF449FDF2852275B00AFFF12 /* MakeAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAlarm.swift; sourceTree = "<group>"; };
 		BF449FE12852299D00AFFF12 /* alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.caf; sourceTree = "<group>"; };
+		BF70BD9A285286E6007CEA89 /* WalkRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkRoute.swift; sourceTree = "<group>"; };
+		BF70BD9C28528D43007CEA89 /* AddMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMapView.swift; sourceTree = "<group>"; };
+		BF70BD9E28528E10007CEA89 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BF8136A4285266BA008DDED7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		BFB7DEC2282C2ACE0074F376 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		BFB7DEC4282C2DA80074F376 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		BFB7DEC8282D4FE20074F376 /* AddScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleView.swift; sourceTree = "<group>"; };
-		BFB7DECA282D57610074F376 /* LocationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingView.swift; sourceTree = "<group>"; };
-		BFBDDEF9285109AA00E0BDCB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BFFBA1912852742B00DEF4A3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,15 +95,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BF70BD99285286D3007CEA89 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BF70BD9A285286E6007CEA89 /* WalkRoute.swift */,
+				BF70BD9C28528D43007CEA89 /* AddMapView.swift */,
+				BF70BD9E28528E10007CEA89 /* Location.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		BFB7DEBE282C2A9F0074F376 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF70BD99285286D3007CEA89 /* Map */,
 				4F6CEB0628296F5D0044878B /* SettingView.swift */,
 				BFB7DEC2282C2ACE0074F376 /* Home.swift */,
 				BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */,
 				BFB7DEC8282D4FE20074F376 /* AddScheduleView.swift */,
-				BFB7DECA282D57610074F376 /* LocationSettingView.swift */,
-				BFBDDEF9285109AA00E0BDCB /* MapView.swift */,
 				BF3C63982851DF6E00444A42 /* ScheduleView.swift */,
 				BF8136A4285266BA008DDED7 /* SearchView.swift */,
 			);
@@ -112,9 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				4FCFD01D285117890011994C /* DataController.swift */,
-				4FCFD01A285114110011994C /* DataModel.xcdatamodeld */,
 				BFB7DEC4282C2DA80074F376 /* DateValue.swift */,
 				BF449FDF2852275B00AFFF12 /* MakeAlarm.swift */,
+				BFFBA1902852742B00DEF4A3 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,18 +201,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FCFD01C285114110011994C /* DataModel.xcdatamodeld in Sources */,
 				4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */,
 				BFB7DEC9282D4FE20074F376 /* AddScheduleView.swift in Sources */,
 				4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */,
 				BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */,
 				BF449FE02852275B00AFFF12 /* MakeAlarm.swift in Sources */,
 				4FCFD01E285117890011994C /* DataController.swift in Sources */,
+				BF70BD9F28528E10007CEA89 /* Location.swift in Sources */,
 				BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */,
 				BF8136A5285266BA008DDED7 /* SearchView.swift in Sources */,
-				BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */,
-				BFBDDEFA285109AA00E0BDCB /* MapView.swift in Sources */,
+				BF70BD9B285286E6007CEA89 /* WalkRoute.swift in Sources */,
+				BFFBA1922852742B00DEF4A3 /* DataModel.xcdatamodeld in Sources */,
 				BF3C63992851DF6E00444A42 /* ScheduleView.swift in Sources */,
+				BF70BD9D28528D43007CEA89 /* AddMapView.swift in Sources */,
 				BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,12 +419,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4FCFD01A285114110011994C /* DataModel.xcdatamodeld */ = {
+		BFFBA1902852742B00DEF4A3 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4FCFD01B285114110011994C /* UserData.xcdatamodel */,
+				BFFBA1912852742B00DEF4A3 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 4FCFD01B285114110011994C /* UserData.xcdatamodel */;
+			currentVersion = BFFBA1912852742B00DEF4A3 /* DataModel.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

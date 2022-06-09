@@ -58,7 +58,10 @@ func Route() -> ResultInfo?{
                 print("////////////")
                 var i = 0
                 let stationInfo = routeInfo!.result.path[0].subPath[1].passStopList
+                pathInfo.append(routeInfo?.result.path[0].subPath[1].lane?[0].busNo ?? "버스 없음")
+                pathInfo.append("번 버스")
                 while(i<=routeInfo!.result.path[0].info.totalStationCount){
+                    pathInfo.append(#"\#n"#)
                     pathInfo.append((stationInfo?.stations[i].stationName)!)
                     pathInfo.append(#"\#n"#)
                     i+=1
@@ -73,18 +76,6 @@ func Route() -> ResultInfo?{
     }
     print(routeInfo?.result.busCount ?? "노오오오오오오오오")
     return routeInfo ?? nil
-}
-
-func mDictToTextJson(rMDic:[AnyHashable : Any]?) -> String {
-    if let sText = rMDic?.description {
-        if let bytes = sText.cString(using: String.Encoding.ascii) {
-            return String(cString: bytes, encoding: String.Encoding.nonLossyASCII)!
-        } else {
-            return "No Data is Displayed"
-        }
-    } else {
-        return "No Data is Displayed"
-    }
 }
 
 struct ResultInfo: Codable{
@@ -121,8 +112,11 @@ struct SubPath: Codable{ //1-9-3
     let distance: Double //2
     let sectionTime: Int //3
     let passStopList : PassStopList? //31
+    let lane : [Lane]?
 }
-
+struct Lane: Codable{
+    let busNo: String
+}
 struct PassStopList: Codable{ // 1-9-3-31
     let stations: [Stations]
 }

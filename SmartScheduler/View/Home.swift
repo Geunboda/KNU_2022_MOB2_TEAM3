@@ -10,6 +10,10 @@ import SwiftUI
 struct Home: View {
     @State var showAddScheduleView: Bool = false
     @State var currentDate: Date = Date()
+    @FetchRequest(sortDescriptors: []) var schedules: FetchedResults<Schedule>
+    @FetchRequest(sortDescriptors: []) var userInfo: FetchedResults<UserInfo>
+    
+    let calendar = Calendar.current
     let alarm = MakeAlarm()
     
     var body: some View {
@@ -27,7 +31,34 @@ struct Home: View {
         }
         .onAppear(){
             alarm.requestAuthorization()
-            alarm.sendNotification()
+            schedules.forEach { schedule in
+                if schedule.sleepAlarm {
+                    let scheduleDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: schedule.startDate!)
+                    
+                    var alarmDateComponents = DateComponents()
+                    alarmDateComponents.year = scheduleDateComponents.year
+                    alarmDateComponents.month = scheduleDateComponents.month
+                    alarmDateComponents.day = scheduleDateComponents.day
+                    alarmDateComponents.hour = scheduleDateComponents.hour - Int(userInfo[0].sleepHour)
+                    alarmDateComponents.minute = scheduleDateComponents.min - Int(userInfo[0].sleepMin)
+                    
+                    alarm.sendNotification(title: schedule.title!, body: "지금 주무셔야 합니다.", dateComponents: alarmDateComponents)
+                }
+                
+                if schedule.prepareAlarm {
+                    let scheduleDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: schedule.startDate!)
+                    
+                    var alarmDateComponents = DateComponents()
+                    alarmDateComponents.year = scheduleDateComponents.year
+                    alarmDateComponents.month = scheduleDateComponents.month
+                    alarmDateComponents.day = scheduleDateComponents.day
+                    alarmDateComponents.hour = scheduleDateComponents.hour - Int(userInfo[0].sleepHour)
+                    alarmDateComponents.minute = scheduleDateComponents.min - Int(userInfo[0].sleepMin)
+                    
+                    alarm.sendNotification(title: schedule.title!, body: "지금 준비하셔야 합니다.", dateComponents: alarmDateComponents)
+                }
+                
+            }
         }
     }
     

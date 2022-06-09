@@ -26,23 +26,12 @@ class MakeAlarm: UIViewController {
         }
     }
     
-    func sendNotification() {
+    func sendNotification(title: String, body: String, dateComponents: DateComponents) {
         let notiContent = UNMutableNotificationContent()
-        //let date = Date()
-        notiContent.title = "title"
-        notiContent.body = "body"
+        notiContent.title = title
+        notiContent.body = body
         notiContent.sound = UNNotificationSound(named: UNNotificationSoundName("alarm.caf"))
-        //notiContent.criticalAlert = UNNotificationSound.default
 
-        var dateComponents = DateComponents()
-        dateComponents.year = 2022
-        dateComponents.month = 6
-        dateComponents.day = 9
-        dateComponents.hour = 22
-        dateComponents.minute = 29
-        
-        //let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        //let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: "LocalNoti", content: notiContent, trigger: trigger)
 

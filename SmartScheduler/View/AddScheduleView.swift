@@ -52,10 +52,8 @@ struct AddScheduleView: View {
             Form {
                 Section() {
                     TextField("내용", text: $title)
-                    Picker("장소", selection: $title) {
-                        Text("대중교통").tag(1)
-                        Text("자동차").tag(2)
-                        Text("도보").tag(3)
+                    NavigationLink(destination: SearchView()) {
+                        Text("장소")
                     }
                 }
                 Section() {

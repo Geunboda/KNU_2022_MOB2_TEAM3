@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		2C137FB52850B4530055A908 /* AddMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FB42850B4530055A908 /* AddMapView.swift */; };
 		2C137FB82850B57F0055A908 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C137FB72850B57F0055A908 /* SnapKit */; };
-		2C137FC2285140940055A908 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FC1285140940055A908 /* MyMapView.swift */; };
-		2C137FC428514FF10055A908 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FC328514FF10055A908 /* MapView.swift */; };
+		2C137FC2285140940055A908 /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FC1285140940055A908 /* MyLocation.swift */; };
+		2C137FC428514FF10055A908 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FC328514FF10055A908 /* Location.swift */; };
+		2C137FC628515A940055A908 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C137FC528515A940055A908 /* MyMapView.swift */; };
 		4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */; };
 		4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0628296F5D0044878B /* SettingView.swift */; };
 		4F6CEB0928296F5E0044878B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0828296F5E0044878B /* Assets.xcassets */; };
@@ -25,8 +26,9 @@
 
 /* Begin PBXFileReference section */
 		2C137FB42850B4530055A908 /* AddMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMapView.swift; sourceTree = "<group>"; };
-		2C137FC1285140940055A908 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
-		2C137FC328514FF10055A908 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2C137FC1285140940055A908 /* MyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
+		2C137FC328514FF10055A908 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2C137FC528515A940055A908 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
 		4F6CEB0128296F5D0044878B /* SmartScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartSchedulerApp.swift; sourceTree = "<group>"; };
 		4F6CEB0628296F5D0044878B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -56,8 +58,9 @@
 			isa = PBXGroup;
 			children = (
 				2C137FB42850B4530055A908 /* AddMapView.swift */,
-				2C137FC328514FF10055A908 /* MapView.swift */,
-				2C137FC1285140940055A908 /* MyMapView.swift */,
+				2C137FC328514FF10055A908 /* Location.swift */,
+				2C137FC1285140940055A908 /* MyLocation.swift */,
+				2C137FC528515A940055A908 /* MyMapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -199,12 +202,13 @@
 				4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */,
 				BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */,
 				4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */,
-				2C137FC428514FF10055A908 /* MapView.swift in Sources */,
+				2C137FC428514FF10055A908 /* Location.swift in Sources */,
 				BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */,
+				2C137FC628515A940055A908 /* MyMapView.swift in Sources */,
 				BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */,
 				BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */,
 				BFB7DEC7282C32E10074F376 /* Task.swift in Sources */,
-				2C137FC2285140940055A908 /* MyMapView.swift in Sources */,
+				2C137FC2285140940055A908 /* MyLocation.swift in Sources */,
 				2C137FB52850B4530055A908 /* AddMapView.swift in Sources */,
 				BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */,
 			);

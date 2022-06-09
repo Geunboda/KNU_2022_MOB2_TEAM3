@@ -14,18 +14,22 @@ import SwiftUI
 class Location: Identifiable {
     let id = UUID()
     let name: String
-    var latitude: Double
-    var longitude: Double
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
     var coordinate: CLLocationCoordinate2D {
             CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    init (name: String) {
+        self.name = name
     }
     init (name: String, latitude: Double, longitude: Double) {
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
     }
-    //위도, 경도 정보 가져오는 함수
-    func getLocation(place : String) -> Location {
+    // 위도, 경도 정보 가져오는 함수
+    static func getLocation(place : String) -> Location {
+        print(place)
         let geocoder = CLGeocoder()
         var lat : Double = 0.0
         var long : Double = 0.0

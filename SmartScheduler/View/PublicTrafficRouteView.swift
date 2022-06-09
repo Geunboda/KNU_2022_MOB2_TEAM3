@@ -15,44 +15,55 @@ struct PublicTrafficRouteView: View {
     @Binding var originLongitude : String! // 경도
     @Binding var destLatitude : String!
     @Binding var destLongitude : String!
+    @State var result = Route()
     
     
     var body: some View {
         SheetTitleBar(content: "대중 교통 경로", showModal: $showModal)
         ScrollView {
             VStack {
-                Text("일정 내용")
-                showRouteInfoView()
+                Text("경로 탐색 결과:")
+                showRouteInfoView(result: $result)
             }
         }
     }
 }
 
 struct showRouteInfoView : View {
-    var resultInfo: ResultInfo?
+    @Binding var result: ResultInfo?
     var body: some View{
         VStack{
-            Text(String(resultInfo?.result.busCount ?? 0))
+            if(result == nil){
+                Text("경로로 가는 대중 교통이 없습니다!")
+            } else{
+                Text(String(result?.result.busCount ?? 0))
+            }
         }
     }
 }
 
-func Route() async throws{
-    var result: ResultInfo?
+func Route() -> ResultInfo?{
+    var routeInfo: ResultInfo?
+    var pathInfo: String = ""
     ODsayService.sharedInst().setApiKey("iLLJul5KVhowQ4a2oobPhg")    //SDK 인증
     ODsayService.sharedInst().setTimeout(5000)    //통신 타임아웃 설정
-    
-    try await ODsayService.sharedInst().requestSearchPubTransPath("128.62864955761276",sy: "35.8791619244707",ex: "128.61454739896172",ey: "35.885516134309185", opt: 0, searchType: 0, searchPathType: 0)
+    ODsayService.sharedInst().requestSearchPubTransPath("128.62864955761276",sy: "35.8791619244707",ex: "128.61454739896172",ey: "35.885516134309185", opt: 0, searchType: 0, searchPathType: 0)
     {
         (retCode:Int32, resultDic:[AnyHashable : Any]!) in
         if retCode == 200 {
             do {
                 let resultJson = try JSONSerialization.data(withJSONObject: resultDic!, options: .prettyPrinted)
-                result = try JSONDecoder().decode(ResultInfo.self, from: resultJson)
+                routeInfo = try JSONDecoder().decode(ResultInfo.self, from: resultJson)
                 print(String(data: resultJson, encoding: .utf8)!)
                 print("////////////")
-                print(result?.result.busCount ?? 0)
-                
+                var i = 0
+                let stationInfo = routeInfo!.result.path[0].subPath[1].passStopList
+                while(i<=routeInfo!.result.path[0].info.totalStationCount){
+                    pathInfo.append((stationInfo?.stations[i].stationName)!)
+                    pathInfo.append(#"\#n"#)
+                    i+=1
+                }
+                print(pathInfo)
             } catch {
                 print(error.localizedDescription)
             }
@@ -60,7 +71,8 @@ func Route() async throws{
             print(resultDic!.description)
         }
     }
-    print(result?.result.busCount ?? "노오오오오오오오오")
+    print(routeInfo?.result.busCount ?? "노오오오오오오오오")
+    return routeInfo ?? nil
 }
 
 func mDictToTextJson(rMDic:[AnyHashable : Any]?) -> String {
@@ -101,6 +113,7 @@ struct Info: Codable{ //1-9-2
     let lastEndStation: String // 9
     let busStationCount: Int // 11
     let subwayStationCount: Int //12
+    let totalStationCount: Int
 }
 
 struct SubPath: Codable{ //1-9-3

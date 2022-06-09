@@ -10,14 +10,54 @@ import UIKit
 
 struct AddSchedulerView: View {
     @Binding var showModal: Bool
+    @FetchRequest(sortDescriptors: []) var schedule: FetchedResults<Schedule>
+    @Environment(\.managedObjectContext) var moc
+    
+    @State var prepareAlarm: Bool = false
+    @State var sleepAlarm: Bool = false
+    
+    @State var title: String = ""
+    
+    @State var startDate: Date = Date()
+    @State var finishDate: Date = Date()
+    @State var transportation: Int16 = 0
+    
+    @State var placeName: String = ""
+    @State var placeLong: Double = 0
+    @State var placeLat: Double = 0
     
     var body: some View {
         SheetTitleBar(content: "일정 설정", showModal: $showModal)
         ScrollView {
-            ScheduleEditView()
+            ScheduleEditView(title: $title,
+                             startDate: $startDate,
+                             finishDate: $finishDate,
+                             prepareAlarm: $prepareAlarm,
+                             sleepAlarm: $sleepAlarm,
+                             placeName: $placeName,
+                             placeLong: $placeLong,
+                             placeLat: $placeLat,
+                             transportation: $transportation)
                 .padding(.horizontal)
         }
         AddButton(content: "저장 하기", action: {
+            let schedule = Schedule(context: moc)
+            schedule.id = UUID()
+            
+            schedule.prepareAlarm = prepareAlarm
+            schedule.sleepAlarm = sleepAlarm
+            
+            schedule.startDate = startDate
+            schedule.finishDate = finishDate
+            schedule.transportation = transportation
+            
+            schedule.title = title
+            
+            schedule.placeName = placeName
+            schedule.placeLong = placeLong
+            schedule.placeLat = placeLat
+
+            try? moc.save()
             showModal = false
         })
     }
@@ -26,7 +66,6 @@ struct AddSchedulerView: View {
 struct SheetTitleBar: View {
     var content: String
     @Binding var showModal: Bool
-    
     var body: some View {
         HStack {
             Button(action: {
@@ -40,10 +79,25 @@ struct SheetTitleBar: View {
     }
 }
 
-struct ScheduleEditView: View{
-    @State var scheduleName = ""
-    @State var scheduleTime = ""
-    @State var alarmOn = false
+struct ScheduleEditView: View {
+    @Binding var title: String
+    @Binding var startDate: Date
+    @Binding var finishDate: Date
+    
+    @Binding var prepareAlarm: Bool
+    @Binding var sleepAlarm: Bool
+    
+    @Binding var placeName: String
+    @Binding var placeLong: Double
+    @Binding var placeLat: Double
+    
+    @Binding var transportation: Int16
+    
+    var dateFormatter: DateFormatter {
+           let formatter = DateFormatter()
+           formatter.dateStyle = .long
+           return formatter
+    }
     
     var body: some View {
         VStack {
@@ -54,11 +108,10 @@ struct ScheduleEditView: View{
                     Text("일정 내용")
                         .multilineTextAlignment(.leading)
                         .padding()
-                    TextField("일정 내용 입력", text: $scheduleName)
+                    TextField("일정 내용 입력", text: $title)
                         .padding()
                 }
             }
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .strokeBorder(lineWidth: 3)
@@ -67,14 +120,13 @@ struct ScheduleEditView: View{
                         Text("일정 시간")
                             .multilineTextAlignment(.leading)
                             .padding([.top, .leading])
-                        DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { Text("시작") })
+                        DatePicker(selection: $startDate, label: { Text("시작") })
                             .padding(.horizontal)
-                        DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { Text("종료") })
+                        DatePicker(selection: $finishDate, label: { Text("종료") })
                             .padding([.leading, .bottom, .trailing])
                     }
                 }
             }
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .strokeBorder(lineWidth: 3)
@@ -83,17 +135,15 @@ struct ScheduleEditView: View{
                         Text("일정 장소")
                             .multilineTextAlignment(.leading)
                             .padding()
-                        TextField("장소:",text:$scheduleName)
+                        TextField("장소:",text: $placeName)
                             .padding()
                         Button("검색") {
                             
                         }
                         .padding(.bottom)
-                        MapView()
                     }
                 }
             }
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .strokeBorder(lineWidth: 3)
@@ -101,26 +151,29 @@ struct ScheduleEditView: View{
                     Text("교통편")
                         .multilineTextAlignment(.leading)
                     Button("대중교통") {
-                        
+                        transportation = 1
                     }
                     .padding(.horizontal)
                     Button("자동차") {
-                        
+                        transportation = 2
                     }
                     .padding(.horizontal)
                     Button("도보") {
-                        
+                        transportation = 3
                     }
                     .padding(.horizontal)
                 }
                 .padding()
             }
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .strokeBorder(lineWidth: 3)
                 HStack {
-                    Toggle("알람 설정",isOn: $alarmOn)
+                    Toggle("준비 알람 설정",isOn: $prepareAlarm)
+                }
+                .padding()
+                HStack {
+                    Toggle("수면 알람 설정",isOn: $sleepAlarm)
                 }
                 .padding()
             }

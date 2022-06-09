@@ -10,42 +10,52 @@ import UIKit
 import CoreData
 
 struct SettingView: View {
-    
     @Binding var showModal: Bool
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<UserInfo>
     @Environment(\.managedObjectContext) var moc
     
-    @State var prepare_hour: Int = 0
-    @State var prepare_min: Int = 0
+    @State var prepareHour: Int = 0
+    @State var prepareMin: Int = 0
     
-    @State var sleep_hour: Int = 0
-    @State var sleep_min: Int = 0
+    @State var sleepHour: Int = 0
+    @State var sleepMin: Int = 0
     
-    @State var Long: Double = 0
-    @State var Lat: Double = 0
+    @State var startLong: Double = 0
+    @State var startLat: Double = 0
     
     var body: some View {
         SheetTitleBar(content: "기본 설정", showModal: $showModal)
         ScrollView {
-            TimeSetting(hour: $prepare_hour, min: $prepare_min, content: "준비 소요 시간", discription: "평소 나갈때 준비하는 시간을 입력해주세요.", image: "hare.fill")
+            TimeSetting(hour: $prepareHour, min: $prepareMin, content: "준비 소요 시간", discription: "평소 나갈때 준비하는 시간을 입력해주세요.", image: "hare.fill")
             Spacer()
-            TimeSetting(hour: $sleep_hour, min: $sleep_min, content: "수면 시간", discription: "보통 몇 시간 주무시나요?", image: "bed.double.fill")
+            TimeSetting(hour: $sleepHour, min: $sleepMin, content: "수면 시간", discription: "보통 몇 시간 주무시나요?", image: "bed.double.fill")
             Spacer()
             LocationSetting(content: "출발 위치", discription: "어디서 주로 출발하시나요?", image: "figure.walk")
         }
         AddButton(content: "저장 하기", action: {
             let userInfo = UserInfo(context: moc)
             userInfo.id = UUID()
-            userInfo.defualt_sleep_hour = Int32(sleep_hour)
-            userInfo.defualt_sleep_minute = Int32(sleep_min)
-            userInfo.default_preparing_hour = Int32(prepare_hour)
-            userInfo.default_preparing_minute = Int32(prepare_min)
-            userInfo.start_point_x = Long
-            userInfo.start_point_y = Lat
+
+            userInfo.prepareHour = Int16(prepareHour)
+            userInfo.prepareMin = Int16(prepareMin)
+
+            userInfo.sleepHour = Int16(sleepHour)
+            userInfo.sleepMin = Int16(sleepMin)
+            
+            userInfo.startLong = startLong
+            userInfo.startLat = startLat
 
             try? moc.save()
             showModal = false
         })
+    }
+    
+    func intToDate(hour: Int, min: Int) -> Date {
+        let dateStr = "\(hour):\(min)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let convertDate = dateFormatter.date(from: dateStr)
+        return convertDate!
     }
 }
 

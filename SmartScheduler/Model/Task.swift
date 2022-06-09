@@ -4,14 +4,10 @@
 //
 //  Created by 신찬규 on 5/12/22.
 //
-
 import SwiftUI
 
 // Task Model and Sample Tasks
 // Array of Tasks
-
-
-
 struct Task: Identifiable {
     var id = UUID().uuidString
     var title: String

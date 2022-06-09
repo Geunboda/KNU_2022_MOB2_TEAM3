@@ -24,7 +24,7 @@ struct SheetTitleBar: View {
     }
 }
 
-struct AddSchedulerView: View {
+struct AddScheduleView: View {
     @Binding var showModal: Bool
     @Environment(\.managedObjectContext) var moc
     
@@ -39,7 +39,7 @@ struct AddSchedulerView: View {
     @State var placeLong: Double = 0
     @State var placeLat: Double = 0
     
-    @State var transportation: Int16 = 0
+    @State var transportation: String = ""
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -64,9 +64,9 @@ struct AddSchedulerView: View {
                 }
                 Section() {
                     Picker("교통편", selection: $transportation) {
-                        Text("대중교통").tag(1)
-                        Text("자동차").tag(2)
-                        Text("도보").tag(3)
+                        Text("대중교통").tag("대중교통")
+                        Text("자동차").tag("자동차")
+                        Text("도보").tag("도보")
                     }
                 }
                 Section() {

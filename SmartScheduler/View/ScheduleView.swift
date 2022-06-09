@@ -18,7 +18,7 @@ struct ScheduleView: View {
                 Text(schedule.title!).font(.title2.bold())
                 Text("\(strToDate(date: schedule.startDate!))에서")
                 Text("\(strToDate(date: schedule.finishDate!))까지")
-                Text(transporationToStr(transporation: schedule.transportation))
+                Text(schedule.transportation!)
                 Button("삭제") {
                     showModal.toggle()
                     moc.delete(schedule)

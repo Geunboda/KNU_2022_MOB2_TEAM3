@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Home: View {
-    @State var showAddSchedulerView: Bool = false
+    @State var showAddScheduleView: Bool = false
     @State var currentDate: Date = Date()
     
     var body: some View {
@@ -18,10 +18,10 @@ struct Home: View {
                 DatePickerView(currentDate: $currentDate)
             }
             AddButton(content: "일정 추가하기", action: {
-                showAddSchedulerView = true
+                showAddScheduleView = true
             })
-        }.sheet(isPresented: $showAddSchedulerView) {
-            AddSchedulerView(showModal: $showAddSchedulerView)
+        }.sheet(isPresented: $showAddScheduleView) {
+            AddScheduleView(showModal: $showAddScheduleView)
         }
     }
 }

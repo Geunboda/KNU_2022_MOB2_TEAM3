@@ -17,7 +17,7 @@
 		BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */; };
 		BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC2282C2ACE0074F376 /* Home.swift */; };
 		BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC4282C2DA80074F376 /* DateValue.swift */; };
-		BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC8282D4FE20074F376 /* AddSchedulerView.swift */; };
+		BFB7DEC9282D4FE20074F376 /* AddScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC8282D4FE20074F376 /* AddScheduleView.swift */; };
 		BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DECA282D57610074F376 /* LocationSettingView.swift */; };
 		BFBDDEFA285109AA00E0BDCB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDDEF9285109AA00E0BDCB /* MapView.swift */; };
 /* End PBXBuildFile section */
@@ -34,7 +34,7 @@
 		BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		BFB7DEC2282C2ACE0074F376 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		BFB7DEC4282C2DA80074F376 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
-		BFB7DEC8282D4FE20074F376 /* AddSchedulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSchedulerView.swift; sourceTree = "<group>"; };
+		BFB7DEC8282D4FE20074F376 /* AddScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleView.swift; sourceTree = "<group>"; };
 		BFB7DECA282D57610074F376 /* LocationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingView.swift; sourceTree = "<group>"; };
 		BFBDDEF9285109AA00E0BDCB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +92,7 @@
 				4F6CEB0628296F5D0044878B /* SettingView.swift */,
 				BFB7DEC2282C2ACE0074F376 /* Home.swift */,
 				BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */,
-				BFB7DEC8282D4FE20074F376 /* AddSchedulerView.swift */,
+				BFB7DEC8282D4FE20074F376 /* AddScheduleView.swift */,
 				BFB7DECA282D57610074F376 /* LocationSettingView.swift */,
 				BFBDDEF9285109AA00E0BDCB /* MapView.swift */,
 				BF3C63982851DF6E00444A42 /* ScheduleView.swift */,
@@ -182,7 +182,7 @@
 			files = (
 				4FCFD01C285114110011994C /* DataModel.xcdatamodeld in Sources */,
 				4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */,
-				BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */,
+				BFB7DEC9282D4FE20074F376 /* AddScheduleView.swift in Sources */,
 				4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */,
 				BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */,
 				4FCFD01E285117890011994C /* DataController.swift in Sources */,

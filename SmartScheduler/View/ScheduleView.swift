@@ -21,13 +21,18 @@ struct ScheduleView: View {
                         Text("\(strToDate(date: schedule.startDate!))에서").foregroundColor(.gray)
                         Text("\(strToDate(date: schedule.finishDate!))까지").foregroundColor(.gray)
                     }
-                    NavigationLink(destination: WalkRouteView()) {
+                    HStack {
                         Text("장소").foregroundColor(.black)
+                        Spacer()
+                        Text(schedule.placeName!).foregroundColor(.gray)
                     }
                     HStack {
                         Text("교통편").foregroundColor(.black)
                         Spacer()
                         Text(schedule.transportation!).foregroundColor(.gray)
+                    }
+                    NavigationLink(destination: WalkRouteView()) {
+                        Text("길찾기").foregroundColor(.black)
                     }
                 }.frame(alignment: .leading)
             }

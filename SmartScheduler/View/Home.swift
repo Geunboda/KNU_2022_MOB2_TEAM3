@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct Home: View {
     @State var showAddSchedulerView: Bool = false
     @State var currentDate: Date = Date()
+    let alarm : MakeAlarm = MakeAlarm()
     
     var body: some View {
         VStack {
@@ -23,7 +25,37 @@ struct Home: View {
         }.sheet(isPresented: $showAddSchedulerView) {
             AddSchedulerView(showModal: $showAddSchedulerView)
         }
+        .onAppear(){
+            alarm.requestAuthorization()
+            alarm.sendNotification()
+        }
+        
     }
+    
+    func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
+
+        let content = UNMutableNotificationContent()
+        content.title = "Late wake up call"
+        content.body = "The early bird catches the worm, but the second mouse gets the cheese."
+        content.categoryIdentifier = "alarm"
+        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = UNNotificationSound.default
+
+        var dateComponents = DateComponents()
+        dateComponents.year = 2022
+        dateComponents.month = 6
+        dateComponents.day = 9
+        dateComponents.hour = 19
+        dateComponents.minute = 3
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
+    }
+    
+
 }
 
 struct TitleBar: View {
@@ -53,6 +85,8 @@ struct TitleBar: View {
         }
     }
 }
+
+
 
 struct AddButton: View {
     var content: String

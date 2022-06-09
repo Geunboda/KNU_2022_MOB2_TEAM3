@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2699442851FD6400C4E3CA /* MakeAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2699432851FD6400C4E3CA /* MakeAlarm.swift */; };
+		4F26994928521A1600C4E3CA /* alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4F26994828521A1600C4E3CA /* alarm.caf */; };
 		4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */; };
 		4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0628296F5D0044878B /* SettingView.swift */; };
 		4F6CEB0928296F5E0044878B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0828296F5E0044878B /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F2699432851FD6400C4E3CA /* MakeAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAlarm.swift; sourceTree = "<group>"; };
+		4F26994828521A1600C4E3CA /* alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.caf; sourceTree = "<group>"; };
 		4F6CEB0128296F5D0044878B /* SmartScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartSchedulerApp.swift; sourceTree = "<group>"; };
 		4F6CEB0628296F5D0044878B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				4FCFD01D285117890011994C /* DataController.swift */,
+				4F26994828521A1600C4E3CA /* alarm.caf */,
+				4F2699432851FD6400C4E3CA /* MakeAlarm.swift */,
 				BFB7DEBF282C2AA30074F376 /* Model */,
 				BFB7DEBE282C2A9F0074F376 /* View */,
 				4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */,
@@ -170,6 +176,7 @@
 			files = (
 				4F6CEB0C28296F5E0044878B /* Preview Assets.xcassets in Resources */,
 				4F6CEB0928296F5E0044878B /* Assets.xcassets in Resources */,
+				4F26994928521A1600C4E3CA /* alarm.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +192,7 @@
 				BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */,
 				4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */,
 				4F947DE52851C0CF008EB16C /* Task.swift in Sources */,
+				4F2699442851FD6400C4E3CA /* MakeAlarm.swift in Sources */,
 				BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */,
 				4FCFD01E285117890011994C /* DataController.swift in Sources */,
 				BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */,

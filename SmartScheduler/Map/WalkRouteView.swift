@@ -8,8 +8,9 @@
 import MapKit
 import SwiftUI
 
-struct ContentView: View {
+struct WalkRouteView: View {
     
+    @Binding var showWalkModal: Bool
     @State private var directions: [String] = []
     @State private var showDirections = false
     
@@ -24,6 +25,9 @@ struct ContentView: View {
             })
             .disabled(directions.isEmpty)
             .padding()
+            AddButton(content: "나가기", action: {
+                showWalkModal = false
+            })
         }
         .sheet(isPresented: $showDirections, content: {
             VStack {
@@ -43,13 +47,13 @@ struct ContentView: View {
         })
     }
 }
-
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        WalkRouteView()
     }
 }
-
+*/
 struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
@@ -92,8 +96,8 @@ struct MapView: UIViewRepresentable {
     
     class MapViewCoordinator: NSObject, MKMapViewDelegate {
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            let renderer = MKPolygonRenderer(overlay: overlay)
-            renderer.strokeColor = .blue
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = .red
             renderer.lineWidth = 5
             return renderer
         }

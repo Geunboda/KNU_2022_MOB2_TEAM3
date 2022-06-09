@@ -49,7 +49,8 @@ struct ScheduleEditView: View{
     @State var scheduleTime = ""
     @State var alarmOn = false
     @State var schedulePlace = ""
-
+    @State var showWalkView: Bool = false
+    
     var body: some View {
         VStack {
             ZStack {
@@ -115,13 +116,14 @@ struct ScheduleEditView: View{
                         
                     }
                     .padding(.horizontal)
-                    Button(action:  {
-                        ContentView()
-                    }, label: {
-                        Text("도보")
+                    AddButton(content: "도보", action: {
+                        //arrivalPlace = $arrivalPlace
+                        showWalkView = true
                     })
+                    .sheet(isPresented: $showWalkView) {
+                        WalkRouteView(showWalkModal: $showWalkView)
+                    }
                     .padding(.horizontal)
-                    
                 }
                 .padding()
             }

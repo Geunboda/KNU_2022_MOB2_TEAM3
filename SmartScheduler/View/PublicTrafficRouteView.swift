@@ -16,44 +16,51 @@ struct PublicTrafficRouteView: View {
     @Binding var destLatitude : String!
     @Binding var destLongitude : String!
     
-    let decoder = JSONDecoder()
-    
-    func viewDidLoad() {
-        //var result: String!
-        ODsayService.sharedInst().setApiKey("iLLJul5KVhowQ4a2oobPhg")    //SDK 인증
-        ODsayService.sharedInst().setTimeout(5000)    //통신 타임아웃 설정
-        ODsayService.sharedInst().requestSearchPubTransPath("128.62864955761276",sy: "35.8791619244707",ex: "128.61454739896172",ey: "35.885516134309185", opt: 0, searchType: 0, searchPathType: 0){
-            (retCode:Int32, resultDic:[AnyHashable : Any]!) in
-            if retCode == 200 {
-                //result = mDictToTextJson(rMDic: resultDic)
-                
-                do {
-                    let resultJson = try JSONSerialization.data(withJSONObject: resultDic!, options: .prettyPrinted)
-                    let result = try JSONDecoder().decode(ResultInfo.self, from: resultJson)
-                    print(String(data: resultJson, encoding: .utf8)!)
-                    print("/////////////////")
-                    print(result.result.busCount)
-                    // 결과 :: Optional("{\"name\":\"demnodey\",\"part\":\"development\"}")
-                } catch {
-                    print(error.localizedDescription)
-                }
-            } else {
-                       print(resultDic!.description)
-            }
-        }
-    }
     
     var body: some View {
         SheetTitleBar(content: "대중 교통 경로", showModal: $showModal)
         ScrollView {
-            HStack {
+            VStack {
                 Text("일정 내용")
-                Button("경로 탐색"){
-                    viewDidLoad()
-                }
+                showRouteInfoView()
             }
         }
     }
+}
+
+struct showRouteInfoView : View {
+    var resultInfo: ResultInfo?
+    var body: some View{
+        VStack{
+            Text(String(resultInfo?.result.busCount ?? 0))
+        }
+    }
+}
+
+func Route() async throws{
+    var result: ResultInfo?
+    ODsayService.sharedInst().setApiKey("iLLJul5KVhowQ4a2oobPhg")    //SDK 인증
+    ODsayService.sharedInst().setTimeout(5000)    //통신 타임아웃 설정
+    
+    try await ODsayService.sharedInst().requestSearchPubTransPath("128.62864955761276",sy: "35.8791619244707",ex: "128.61454739896172",ey: "35.885516134309185", opt: 0, searchType: 0, searchPathType: 0)
+    {
+        (retCode:Int32, resultDic:[AnyHashable : Any]!) in
+        if retCode == 200 {
+            do {
+                let resultJson = try JSONSerialization.data(withJSONObject: resultDic!, options: .prettyPrinted)
+                result = try JSONDecoder().decode(ResultInfo.self, from: resultJson)
+                print(String(data: resultJson, encoding: .utf8)!)
+                print("////////////")
+                print(result?.result.busCount ?? 0)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        } else {
+            print(resultDic!.description)
+        }
+    }
+    print(result?.result.busCount ?? "노오오오오오오오오")
 }
 
 func mDictToTextJson(rMDic:[AnyHashable : Any]?) -> String {

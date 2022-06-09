@@ -39,6 +39,6 @@ struct AddMapView: View {
         arrivalLocation = Location.getLocation(place: arrival.wrappedValue)
 //      print("(", arrivalLocation.latitude, arrivalLocation.longitude, ")")
         locations = [arrivalLocation, baseLocation]
-        mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: arrivalLocation.latitude, longitude: arrivalLocation.longitude), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+        mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: baseLocation.latitude, longitude: baseLocation.longitude), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
     }
 }

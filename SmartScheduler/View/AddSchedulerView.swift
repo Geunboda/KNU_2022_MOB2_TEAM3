@@ -115,9 +115,11 @@ struct ScheduleEditView: View{
                         
                     }
                     .padding(.horizontal)
-                    Button("도보") {
-                        
-                    }
+                    Button(action:  {
+                        ContentView()
+                    }, label: {
+                        Text("도보")
+                    })
                     .padding(.horizontal)
                     
                 }

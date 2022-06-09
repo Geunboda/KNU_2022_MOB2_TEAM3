@@ -74,7 +74,7 @@ struct LocationBar: View {
                     showDeView = true
                 })
                 .sheet(isPresented: $showDeView) {
-                    MyMapView(departure: $departurePlace, showDeModal: $showDeView)
+                    //MyMapView(departure: $departurePlace, showDeModal: $showDeView)
                 }
             }
         }.frame(width: 320, height: 260)

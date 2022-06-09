@@ -27,12 +27,17 @@ struct AddMapView: View {
             Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
                 MapPin(coordinate: location.coordinate)
             }
+            //print(arrivalLocation.latitude, arrivalLocation.longitude)
         }
+        AddButton(content: "저장하기", action: {
+            showMapModal = false
+        })
     }
     init(arrival: Binding<String>, showMapModal: Binding<Bool>) {
         self._arrival = arrival
         self._showMapModal = showMapModal
         arrivalLocation = Location.getLocation(place: arrival.wrappedValue)
+//      print("(", arrivalLocation.latitude, arrivalLocation.longitude, ")")
         locations = [arrivalLocation, baseLocation]
         mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: arrivalLocation.latitude, longitude: arrivalLocation.longitude), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
     }

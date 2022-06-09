@@ -4,26 +4,40 @@
 //
 //  Created by seyonee on 2022/06/09.
 //
-import SwiftUI
+import CoreLocation
+import UIKit
 import MapKit
+import SwiftUI
 
 struct MyMapView: View {
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+    @Binding var departure: String
+    @Binding var showDeModal: Bool
     
-    let locations = [
-        Location(name: "Buckingham Palace", latitude: 51.501, longitude: -0.141),
-        Location(name: "Tower of London", latitude: 51.508, longitude: -0.076)
-    ]
+    let baseLocation = Location(name: "Apple", latitude: 37.334831452184766, longitude: -122.00885398493168)
 
+    @State var mapRegion: MKCoordinateRegion
+    
+    var departLocation: Location
+    var locations: [Location]
+    
+    // 37.334831452184766, -122.00885398493168
     var body: some View {
-        Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
-            MapPin(coordinate: location.coordinate)
+        VStack {
+            Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
+                MapPin(coordinate: location.coordinate)
+            }
+            //print(arrivalLocation.latitude, arrivalLocation.longitude)
         }
+        AddButton(content: "저장하기", action: {
+            showDeModal = false
+        })
     }
-}
-
-struct MyMapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyMapView()
+    init(departure: Binding<String>, showDeModal: Binding<Bool>) {
+        self._departure = departure
+        self._showDeModal = showDeModal
+        departLocation = Location.getLocation(place: departure.wrappedValue)
+//      print("(", arrivalLocation.latitude, arrivalLocation.longitude, ")")
+        locations = [departLocation, baseLocation]
+        mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: departLocation.latitude, longitude: departLocation.longitude), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
     }
 }

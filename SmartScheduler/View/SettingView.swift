@@ -29,6 +29,7 @@ struct SettingView: View {
 
 struct SettingBar: View {
     @State var time = ""
+    
     var content: String
     
     var body: some View {
@@ -45,9 +46,6 @@ struct SettingBar: View {
                     .multilineTextAlignment(.center)
                     .keyboardType(.decimalPad)
                     .padding()
-                Button("입력") {
-                    MyMapView()
-                }
             }.offset(x:0, y: 10)
         }
         .frame(width: 320, height: 130)
@@ -56,6 +54,8 @@ struct SettingBar: View {
 }
 
 struct LocationBar: View {
+    @State var showDeView: Bool = false
+    @State var departurePlace = ""
     @State var time = ""
     var content: String
     
@@ -67,8 +67,14 @@ struct LocationBar: View {
             Text(content)
                 .offset(x:0, y: -100)
             VStack{
-                Button("입력") {
-                    hideKeyboard()
+                TextField("기본 출발지 입력하기", text: $departurePlace)
+                    .padding()
+                AddButton(content: "출발지 찾기", action: {
+                    //arrivalPlace = $arrivalPlace
+                    showDeView = true
+                })
+                .sheet(isPresented: $showDeView) {
+                    MyMapView(departure: $departurePlace, showDeModal: $showDeView)
                 }
             }
         }.frame(width: 320, height: 260)

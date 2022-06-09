@@ -4,7 +4,7 @@
 //
 //  Created by seyonee on 2022/06/09.
 //
-
+import Foundation
 import CoreLocation
 import UIKit
 import MapKit
@@ -29,7 +29,6 @@ class Location: Identifiable {
     }
     // 위도, 경도 정보 가져오는 함수
     static func getLocation(place : String) -> Location {
-        print(place)
         let geocoder = CLGeocoder()
         var lat : Double = 0.0
         var long : Double = 0.0
@@ -38,8 +37,15 @@ class Location: Identifiable {
             guard let location = placemark?.first?.location else { return print("데이터가 없습니다.") }
             lat = location.coordinate.latitude
             long = location.coordinate.longitude
-            print(lat, long)
+            print("in_function_latitude: ", lat, "in_function_longitude: ", long)
+            //return Location(name: place, latitude: lat, longitude: long)
         }
-        return Location(name: place, latitude: lat, longitude: long)
+        if lat == 0.0 {
+            return Location(name: "error", latitude: 5.0, longitude: 5.0)
+        } else {
+            return Location(name: place, latitude: lat, longitude: long)
+        }
+        //print("in_function_latitude: ", lat, "in_function_longitude: ", long)
+        //return Location(name: place, latitude: lat, longitude: long)
     }
 }

@@ -8,60 +8,6 @@
 import SwiftUI
 import UIKit
 
-struct AddSchedulerView: View {
-    @Binding var showModal: Bool
-    @Environment(\.managedObjectContext) var moc
-    
-    @State var prepareAlarm: Bool = false
-    @State var sleepAlarm: Bool = false
-    
-    @State var title: String = ""
-    
-    @State var startDate: Date = Date()
-    @State var finishDate: Date = Date()
-    @State var transportation: Int16 = 0
-    
-    @State var placeName: String = ""
-    @State var placeLong: Double = 0
-    @State var placeLat: Double = 0
-    
-    var body: some View {
-        SheetTitleBar(content: "일정 설정", showModal: $showModal)
-        ScrollView {
-            ScheduleEditView(title: $title,
-                             startDate: $startDate,
-                             finishDate: $finishDate,
-                             prepareAlarm: $prepareAlarm,
-                             sleepAlarm: $sleepAlarm,
-                             placeName: $placeName,
-                             placeLong: $placeLong,
-                             placeLat: $placeLat,
-                             transportation: $transportation)
-                .padding(.horizontal)
-        }
-        AddButton(content: "저장 하기", action: {
-            let schedule = Schedule(context: moc)
-            schedule.id = UUID()
-            
-            schedule.prepareAlarm = prepareAlarm
-            schedule.sleepAlarm = sleepAlarm
-            
-            schedule.startDate = startDate
-            schedule.finishDate = finishDate
-            schedule.transportation = transportation
-            
-            schedule.title = title
-            
-            schedule.placeName = placeName
-            schedule.placeLong = placeLong
-            schedule.placeLat = placeLat
-
-            try? moc.save()
-            showModal = false
-        })
-    }
-}
-
 struct SheetTitleBar: View {
     var content: String
     @Binding var showModal: Bool
@@ -78,104 +24,79 @@ struct SheetTitleBar: View {
     }
 }
 
-struct ScheduleEditView: View {
-    @Binding var title: String
-    @Binding var startDate: Date
-    @Binding var finishDate: Date
+struct AddSchedulerView: View {
+    @Binding var showModal: Bool
+    @Environment(\.managedObjectContext) var moc
     
-    @Binding var prepareAlarm: Bool
-    @Binding var sleepAlarm: Bool
+    @State var prepareAlarm: Bool = false
+    @State var sleepAlarm: Bool = false
     
-    @Binding var placeName: String
-    @Binding var placeLong: Double
-    @Binding var placeLat: Double
+    @State var title: String = ""
+    @State var startDate: Date = Date()
+    @State var finishDate: Date = Date()
     
-    @Binding var transportation: Int16
+    @State var placeName: String = ""
+    @State var placeLong: Double = 0
+    @State var placeLat: Double = 0
+    
+    @State var transportation: Int16 = 0
     
     var dateFormatter: DateFormatter {
-           let formatter = DateFormatter()
-           formatter.dateStyle = .long
-           return formatter
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
     }
     
     var body: some View {
-        VStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(lineWidth: 3)
-                HStack {
-                    Text("일정 내용")
-                        .multilineTextAlignment(.leading)
-                        .padding()
-                    TextField("일정 내용 입력", text: $title)
-                        .padding()
-                }
-            }
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(lineWidth: 3)
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("일정 시간")
-                            .multilineTextAlignment(.leading)
-                            .padding([.top, .leading])
-                        DatePicker(selection: $startDate, label: { Text("시작") })
-                            .padding(.horizontal)
-                        DatePicker(selection: $finishDate, label: { Text("종료") })
-                            .padding([.leading, .bottom, .trailing])
+        NavigationView {
+            Form {
+                Section() {
+                    TextField("내용", text: $title)
+                    Picker("장소", selection: $title) {
+                        Text("대중교통").tag(1)
+                        Text("자동차").tag(2)
+                        Text("도보").tag(3)
                     }
                 }
-            }
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(lineWidth: 3)
-                HStack {
-                    VStack {
-                        Text("일정 장소")
-                            .multilineTextAlignment(.leading)
-                            .padding()
-                        TextField("장소:",text: $placeName)
-                            .padding()
-                        Button("검색") {
-                            
-                        }
-                        .padding(.bottom)
+                Section() {
+                    DatePicker(selection: $startDate, label: { Text("시작") })
+                    DatePicker(selection: $finishDate, label: { Text("종료") })
+                }
+                Section() {
+                    Picker("교통편", selection: $transportation) {
+                        Text("대중교통").tag(1)
+                        Text("자동차").tag(2)
+                        Text("도보").tag(3)
                     }
                 }
-            }
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(lineWidth: 3)
-                HStack {
-                    Text("교통편")
-                        .multilineTextAlignment(.leading)
-                    Button("대중교통") {
-                        transportation = 1
-                    }
-                    .padding(.horizontal)
-                    Button("자동차") {
-                        transportation = 2
-                    }
-                    .padding(.horizontal)
-                    Button("도보") {
-                        transportation = 3
-                    }
-                    .padding(.horizontal)
+                Section() {
+                    Toggle("준비 알람",isOn: $prepareAlarm)
+                    Toggle("수면 알람",isOn: $sleepAlarm)
                 }
-                .padding()
             }
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(lineWidth: 3)
-                HStack {
-                    Toggle("준비 알람 설정",isOn: $prepareAlarm)
-                }
-                .padding()
-                HStack {
-                    Toggle("수면 알람 설정",isOn: $sleepAlarm)
-                }
-                .padding()
-            }
+            .navigationBarTitle("일정 생성", displayMode: .inline)
+            .navigationBarItems(leading: Button("취소") {
+                showModal.toggle()
+            }, trailing: Button("저장") {
+                let schedule = Schedule(context: moc)
+                schedule.id = UUID()
+                
+                schedule.prepareAlarm = prepareAlarm
+                schedule.sleepAlarm = sleepAlarm
+                
+                schedule.startDate = startDate
+                schedule.finishDate = finishDate
+                schedule.transportation = transportation
+                
+                schedule.title = title
+                
+                schedule.placeName = placeName
+                schedule.placeLong = placeLong
+                schedule.placeLat = placeLat
+
+                try? moc.save()
+                showModal = false
+            })
         }
     }
 }

@@ -10,11 +10,12 @@ import SwiftUI
 struct DatePickerView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var schedules: FetchedResults<Schedule>
-    
+
     @Binding var currentDate: Date
     
     // Month update on arrow button clicks
     @State var currentMonth: Int = 0
+    @State var showScheduleView: Bool = false
     
     var body: some View {
         VStack(spacing: 35) {
@@ -87,18 +88,24 @@ struct DatePickerView: View {
                     return isSameDay(date1: schedule.startDate!, date2: currentDate)
                 } {
                     ForEach(schedules) { schedule in
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text(schedule.startDate!, style: .time)
-                            Text(schedule.title!).font(.title2.bold())
+                        Button {
+                            showScheduleView = true
+                        } label: {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(schedule.startDate!, style: .time).foregroundColor(.black)
+                                Text(schedule.title!).font(.title2.bold()).foregroundColor(.black)
+                            }
+                            .padding(.vertical, 10)
+                            .padding(.horizontal)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(
+                                Color("Purple")
+                                    .opacity(0.5)
+                                    .cornerRadius(10)
+                            ).sheet(isPresented: $showScheduleView) {
+                                ScheduleView(showModal: $showScheduleView, schedule: schedule)
+                            }
                         }
-                        .padding(.vertical, 10)
-                        .padding(.horizontal)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(
-                            Color("Purple")
-                                .opacity(0.5)
-                                .cornerRadius(10)
-                        )
                     }
                 } else {
                     Text("일정 없음")

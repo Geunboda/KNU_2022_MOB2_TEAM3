@@ -11,9 +11,9 @@
 		4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0628296F5D0044878B /* SettingView.swift */; };
 		4F6CEB0928296F5E0044878B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0828296F5E0044878B /* Assets.xcassets */; };
 		4F6CEB0C28296F5E0044878B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6CEB0B28296F5E0044878B /* Preview Assets.xcassets */; };
-		4F947DE52851C0CF008EB16C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F947DE42851C0CF008EB16C /* Task.swift */; };
 		4FCFD01C285114110011994C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FCFD01A285114110011994C /* DataModel.xcdatamodeld */; };
 		4FCFD01E285117890011994C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCFD01D285117890011994C /* DataController.swift */; };
+		BF3C63992851DF6E00444A42 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C63982851DF6E00444A42 /* ScheduleView.swift */; };
 		BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */; };
 		BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC2282C2ACE0074F376 /* Home.swift */; };
 		BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7DEC4282C2DA80074F376 /* DateValue.swift */; };
@@ -28,9 +28,9 @@
 		4F6CEB0628296F5D0044878B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		4F6CEB0828296F5E0044878B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F6CEB0B28296F5E0044878B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4F947DE42851C0CF008EB16C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		4FCFD01B285114110011994C /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		4FCFD01D285117890011994C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		BF3C63982851DF6E00444A42 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		BFB7DEC0282C2AB70074F376 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		BFB7DEC2282C2ACE0074F376 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		BFB7DEC4282C2DA80074F376 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
@@ -69,8 +69,6 @@
 		4F6CEB0328296F5D0044878B /* SmartScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				4FCFD01A285114110011994C /* DataModel.xcdatamodeld */,
-				4FCFD01D285117890011994C /* DataController.swift */,
 				BFB7DEBF282C2AA30074F376 /* Model */,
 				BFB7DEBE282C2A9F0074F376 /* View */,
 				4F6CEB0428296F5D0044878B /* SmartSchedulerApp.swift */,
@@ -97,6 +95,7 @@
 				BFB7DEC8282D4FE20074F376 /* AddSchedulerView.swift */,
 				BFB7DECA282D57610074F376 /* LocationSettingView.swift */,
 				BFBDDEF9285109AA00E0BDCB /* MapView.swift */,
+				BF3C63982851DF6E00444A42 /* ScheduleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -104,8 +103,9 @@
 		BFB7DEBF282C2AA30074F376 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4FCFD01D285117890011994C /* DataController.swift */,
+				4FCFD01A285114110011994C /* DataModel.xcdatamodeld */,
 				BFB7DEC4282C2DA80074F376 /* DateValue.swift */,
-				4F947DE42851C0CF008EB16C /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,12 +184,12 @@
 				4F6CEB0728296F5D0044878B /* SettingView.swift in Sources */,
 				BFB7DEC9282D4FE20074F376 /* AddSchedulerView.swift in Sources */,
 				4F6CEB0528296F5D0044878B /* SmartSchedulerApp.swift in Sources */,
-				4F947DE52851C0CF008EB16C /* Task.swift in Sources */,
 				BFB7DEC3282C2ACE0074F376 /* Home.swift in Sources */,
 				4FCFD01E285117890011994C /* DataController.swift in Sources */,
 				BFB7DEC1282C2AB70074F376 /* DatePickerView.swift in Sources */,
 				BFB7DECB282D57610074F376 /* LocationSettingView.swift in Sources */,
 				BFBDDEFA285109AA00E0BDCB /* MapView.swift in Sources */,
+				BF3C63992851DF6E00444A42 /* ScheduleView.swift in Sources */,
 				BFB7DEC5282C2DA80074F376 /* DateValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

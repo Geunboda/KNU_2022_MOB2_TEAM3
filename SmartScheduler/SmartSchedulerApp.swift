@@ -10,14 +10,11 @@ import CoreData
 
 @main
 struct SmartSchedulerApp: App {
+    @StateObject private var dataController = DataController()
     
-
-    @StateObject private var dataController = DataController()    
     var body: some Scene {
         WindowGroup {
-            Home()
-                .environment(\.managedObjectContext, dataController.container.viewContext)
-            
+            Home().environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

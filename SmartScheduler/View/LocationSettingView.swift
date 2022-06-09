@@ -8,7 +8,6 @@ import SwiftUI
 import UIKit
 
 struct LocationSettingView: View {
-    
     var body: some View {
         VStack {
             ScrollView {

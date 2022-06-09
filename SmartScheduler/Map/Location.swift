@@ -1,0 +1,51 @@
+//
+//  MapView.swift
+//  SmartScheduler
+//
+//  Created by seyonee on 2022/06/09.
+//
+import Foundation
+import CoreLocation
+import UIKit
+import MapKit
+import SwiftUI
+
+//장소 이름, 위도, 경도 저장하는 Location 클래스
+class Location: Identifiable {
+    let id = UUID()
+    let name: String
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var coordinate: CLLocationCoordinate2D {
+            CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    init (name: String) {
+        self.name = name
+    }
+    init (name: String, latitude: Double, longitude: Double) {
+        self.name = name
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    // 위도, 경도 정보 가져오는 함수
+    static func getLocation(place : String) -> Location {
+        let geocoder = CLGeocoder()
+        var lat : Double = 0.0
+        var long : Double = 0.0
+        geocoder.geocodeAddressString(place) { (placemark, error) in
+            guard error == nil else { return print(error!.localizedDescription) }
+            guard let location = placemark?.first?.location else { return print("데이터가 없습니다.") }
+            lat = location.coordinate.latitude
+            long = location.coordinate.longitude
+            print("in_function_latitude: ", lat, "in_function_longitude: ", long)
+            //return Location(name: place, latitude: lat, longitude: long)
+        }
+        if lat == 0.0 {
+            return Location(name: "error", latitude: 5.0, longitude: 5.0)
+        } else {
+            return Location(name: place, latitude: lat, longitude: long)
+        }
+        //print("in_function_latitude: ", lat, "in_function_longitude: ", long)
+        //return Location(name: place, latitude: lat, longitude: long)
+    }
+}

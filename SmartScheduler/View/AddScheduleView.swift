@@ -56,7 +56,7 @@ struct AddScheduleView: View {
             Form {
                 Section() {
                     TextField("내용", text: $title)
-                    NavigationLink(destination: SearchView()) {
+                    NavigationLink(destination: SearchView(searchText: $placeName)) {
                         Text("장소")
                     }
                 }
@@ -97,8 +97,7 @@ struct AddScheduleView: View {
                 schedule.placeLat = placeLat
 
                 try? moc.save()
-                
-                /*
+            
                 let scheduleDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: schedule.startDate!)
                 
                 var alarmDateComponents = DateComponents()
@@ -106,30 +105,30 @@ struct AddScheduleView: View {
                 alarmDateComponents.month = scheduleDateComponents.month
                 alarmDateComponents.day = scheduleDateComponents.day
                 
-                
                 if schedule.sleepAlarm {
-                    let sleepHour = Int(userInfo[0].sleepHour)
-                    let sleepMin = Int(userInfo[0].sleepMin)
+                    let sleepHour = 8
+                    let sleepMin = 0
                     let temp = (scheduleDateComponents.hour * 60 + scheduleDateComponents.minute) - (sleepHour * 60 + sleepMin)
                     
                     alarmDateComponents.hour = temp / 60
                     alarmDateComponents.minute = temp % 60
+                    
+                    alarmDateComponents.hours = cheduleDateComponents.hours
+                    alarmDateComponents.minute = cheduleDateComponents.minute
            
                     alarm.sendNotification(title: schedule.title!, body: "지금 주무셔야 합니다.", dateComponents: alarmDateComponents)
                 }
                 
-                
                 if schedule.prepareAlarm {
-                    let prepareHour = Int(userInfo[0].prepareHour)
-                    let prepareMin = Int(userInfo[0].prepareMin)
+                    let prepareHour = 1
+                    let prepareMin = 30
                     let temp = (scheduleDateComponents.hour * 60 + scheduleDateComponents.minute) - (prepareHour * 60 + prepareMin)
                     
-                    alarmDateComponents.hour = temp / 60
-                    alarmDateComponents.minute = temp % 60
+                    alarmDateComponents.hours = cheduleDateComponents.hours
+                    alarmDateComponents.minute = cheduleDateComponents.minute
                     
                     alarm.sendNotification(title: schedule.title!, body: "지금 준비하셔야 합니다.", dateComponents: alarmDateComponents)
                 }
-                */
                 
                 showModal = false
             })

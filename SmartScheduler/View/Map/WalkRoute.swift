@@ -22,7 +22,7 @@ struct WalkRouteView: View {
         .sheet(isPresented: $showDirections, content: {
             VStack {
                 Text("경로")
-                    .font(.title2.bold()).foregroundColor(.black)
+                    .font(.title2.bold()).foregroundColor(.black).padding()
                 List() {
                     ForEach(0..<self.directions.count, id: \.self) { i in
                         Text(self.directions[i])
@@ -46,7 +46,7 @@ struct MapView: UIViewRepresentable {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         
-        //center
+        // center
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.71, longitude: -74), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
         mapView.setRegion(region, animated: true)
         

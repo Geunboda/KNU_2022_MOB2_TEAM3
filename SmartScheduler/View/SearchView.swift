@@ -2,12 +2,11 @@ import SwiftUI
  
 struct SearchView: View {
     let array = [
-        "김서근", "포뇨", "하울", "소피아", "캐시퍼", "소스케",
-        "치히로", "하쿠", "가오나시", "제니바", "카브", "마르클",
-        "토토로", "사츠키", "지브리", "스튜디오", "캐릭터"
+        "경북대학교 IT4호관", "마이카츠 경대북문점", "낭만놀이", "온담정",
+        "혜화문식당", "한끼갈비 경대점", "다이마루", "W 컬렉션 경북대점"
     ]
     
-    @State private var searchText = ""
+    @Binding var searchText: String
     
     var body: some View {
         VStack {
